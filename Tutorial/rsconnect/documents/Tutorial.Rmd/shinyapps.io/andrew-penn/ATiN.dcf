@@ -1,0 +1,12 @@
+name: ATiN
+title: ATiN
+username:
+account: andrew-penn
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3077169
+bundleId: 3772372
+url: https://andrew-penn.shinyapps.io/ATiN/
+when: 1603405451.09306
+asMultiple: FALSE
+asStatic: FALSE

@@ -12,10 +12,10 @@
 
 <meta name="date" content="2020-04-11" />
 
-<meta name="progressive" content="false" />
-<meta name="allow-skip" content="false" />
+<meta name="progressive" content="true" />
+<meta name="allow-skip" content="true" />
 
-<title>Advanced Techniques in Neuroscience</title>
+<title>Advanced Techniques in Neuroscience Workshop</title>
 
 
 <!-- highlightjs -->
@@ -118,10 +118,19 @@ $(document).ready(function () {
 
 <div class="topics">
 
-<div id="section-introduction" class="section level2">
-<h2>Introduction</h2>
+<div id="section-learning-outcomes" class="section level2">
+<h2>Learning outcomes</h2>
+<p>By the end of this module a successful student should be able to:</p>
+<ul>
+<li><p>Gain a comprehensive understanding of the methods used in preparing for and conducting patch clamp recordings in brain slices</p></li>
+<li><p>Interpret and scrutinize data or output from software used to detect mEPSCs and measure their properties</p></li>
+<li><p>Critically evaluate the application of the methods and their significance</p></li>
+</ul>
+</div>
+<div id="section-prelude" class="section level2">
+<h2>Prelude</h2>
 <p><font size = "3"></p>
-<p>Welcome to the slice physiology session! In this session you’ll see acute brain slices being prepared before getting hands-on with analysing data extracted from these acute brain slices using Eventer and Stimfit. Work through the below tabs in order and don’t hesitate to ask questions at any point!</p>
+<p>Welcome to the slice physiology workshop! In this workshop you will have virtual lab demonstrations of acute and organotypic brain slice preparation and whole-cell patch-clamp electrophysiology in brain slices. This will be followed by hands-on analysis of example data of miniature excitatoy synaptic currents using Eventer and Stimfit. Work through the below tabs in order and don’t hesitate to ask questions with a tutor at any point!</p>
 <p>Throughout this worksheet you’ll notice several symbols, make sure to pay attention to these as these will help guide you through the session. The below table should hopefully explain what these mean.</p>
 <table style="width:100%;">
 <colgroup>
@@ -137,6 +146,16 @@ $(document).ready(function () {
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td align="left"><font size="7"> 📖 </font></td>
+<td align="left">Reading</td>
+<td align="left">Information for you to read</td>
+</tr>
+<tr class="even">
+<td align="left"><font size="7"> 🎬 </font></td>
+<td align="left">Video</td>
+<td align="left">A video for you to watch</td>
+</tr>
 <tr class="odd">
 <td align="left"><font size="7"> 🤔 </font></td>
 <td align="left">Question</td>
@@ -155,413 +174,219 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>Please enjoy the session, and make the most of it by asking any questions you have - we’re happy to help.</p>
-<p><font size="4"></p>
+</div>
+<div id="section-background" class="section level2">
+<h2>Background</h2>
+<p><font size = "3"></p>
 <table>
 <thead>
 <tr class="header">
-<th align="left"><font size="10"> 🤔 </font> QUESTIONS FOR ANDY</th>
+<th align="left"><font size="7"> 📖 </font> WHY HAVE A WORKSHOP ON PATCH CLAMP IN BRAIN SLICES?</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">What do you think about html alerts?</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
 </tbody>
 </table>
-<p></font></p>
-<p>Alerts like this …</p>
-<div class="alert alert-danger">
-<font size="10"> 🤔 </font> alert alert-danger
-</div>
-<div class="alert alert-warning">
-alert alert-warning
-</div>
-<div class="alert alert-info">
-alert alert-info
-</div>
-… in which the text can also be formatted to the left …<br />
-
-<div align="left">
-<div class="alert alert-danger">
-<strong>WARNING</strong> This video contains scenes you may find upsetting <strong>WARNING</strong>
-</div>
-</div>
-… center …<br />
-
-<center>
-<div class="alert alert-warning">
-<strong>TIP</strong> Don’t watch if you don’t want to
-</div>
-</center>
-… and right of the page.<br />
-
-<div align="right">
-<div class="alert alert-info">
-<strong>INFO</strong> Something else relevant
-</div>
-</div>
-</div>
-<div id="section-slicing" class="section level2">
-<h2>1. Slicing</h2>
+<p><strong>Why study excitatory synaptic transmission?</strong> The synapse is a site of contact between two neurons. Excitatory chemical synapses are essential for information flow through neuronal circuits and a major site for the processing and storage of memories in the brain. Therefore, it is not surprising that synapses serve as the site of action for many prescribed medications and their disruption contributes to many neurological and psychiatric disorders. These include epilepsy, stroke, schizophrenia, autism, depression, addiction, Parkinson’s disease, Alzheimer’s disease, and traumatic brain injury. Hence, a fundamental understanding of the function, and plasticity of synapses is essential to advancing our knowledge about brain function in health and disease.</p>
+<p><strong>Why brain slices?</strong> In our experiments, we record from brain tissue <em>ex vivo</em> brain tissue, meaning outside of the living body. This is achieved by cutting slices of the brain and either recording from them the same day (acute slices) or placing them in an incubator to culture over a couple of weeks before recording (organotypic slices). Brain slices maintain many aspects of <em>in vivo</em> biology, including functional local synaptic circuitry with preserved architecture. However, brain slices enable good experimental access compared to <em>in vivo</em> as well as precise control of the extracellular environment, for example using drugs, to help identify or isolate the molecular components underling measurements. In addition, voltage clamp recordings are more feasible in brain slices since it is easier to obtain good quality patch clamp recordings when patching under visual guidance (using a microscope). With organotypic slices, transfection or viral transduction can be accomplished relatively easily <em>in vitro</em> to study the function of novel genes or genetic manipulations. They are also amenable to longitudinal studies (i.e. repeated measurements of the same variable over time) without ethical concerns.</p>
+<p><strong>Why patch clamp technique?</strong> Currents elicited by unitary synaptic connections at CNS synapses are typically very small, so for precise and controlled detection of synaptic events one is best employing intracellular recording techniques. Application of patch-clamp techniques to brain slices has significantly advanced research on endogenous ion channels and the properties of synaptic transmission in central neurons. This recording technique has allowed direct observation of spontaneous and evoked synaptic currents as well as the gating of endogenous ion channels at single-channel resolution. It can also be used to dialyze neurons with compounds that can highlight the morphology of cells, thus extending the capabilities of patch clamp to assisting in anatomical studies. Together, these advances have contributed to our understanding of passive and active biophysical properties of excitable cells. A major advantage of this technique is that it provides information in real-time on how specific manipulations (e.g., pharmacological, experimenter-induced plasticity) may alter specific changes in neuronal or ion channel function.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="left"><font size="10"> ❗ </font> TODO FOR ANDY</th>
+<th align="left"><font size="7"> 🤔 </font> TOPICAL QUESTIONS</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Video of slice procedure inserted here</td>
-</tr>
-<tr class="even">
-<td align="left">Any introduction to this page</td>
-</tr>
-<tr class="odd">
-<td align="left">Update questions for this section</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
 </tbody>
 </table>
-<div id="section-protocol" class="section level3">
-<h3>Protocol</h3>
-<p><strong>1. Sucrose based cutting and storage solution</strong></p>
+<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
+<div data-label="background_questions-1" class="tutorial-question panel-body">
+<div id="background_questions-1-answer_container" class="shiny-html-output"></div>
+<div id="background_questions-1-message_container" class="shiny-html-output"></div>
+<div id="background_questions-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="background_questions-2" class="tutorial-question panel-body">
+<div id="background_questions-2-answer_container" class="shiny-html-output"></div>
+<div id="background_questions-2-message_container" class="shiny-html-output"></div>
+<div id="background_questions-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div></p>
+</div>
+<div id="section-brain-slices" class="section level2">
+<h2>1. Brain Slices</h2>
+<p>We can either record from freshly cut brain slices (called acute slices) or we can place slices of brain tissue in an incubator and culture them for up to a few weeks before recording - we call these organotypic or cultured slices. Please find in each of the following subtopics a video demonstration and a set of questions for you to answer.</p>
+</div>
+<div id="section-a.-acute-slices" class="section level2">
+<h2>1a. Acute slices</h2>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Reagent</th>
-<th align="left">mM</th>
-<th align="left">mw</th>
-<th align="left">g/500 ml</th>
+<th align="left"><font size="7"> 🎬 </font> Virtual lab demo: Preparing acute hippocampal slices (16 mins)</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">NaCl</td>
-<td align="left">75</td>
-<td align="left">8.44</td>
-<td align="left">2.19</td>
-</tr>
-<tr class="even">
-<td align="left">Sucrose</td>
-<td align="left">75</td>
-<td align="left">342.3</td>
-<td align="left">12.83</td>
-</tr>
-<tr class="odd">
-<td align="left">D-Glucose</td>
-<td align="left">10</td>
-<td align="left">180.16</td>
-<td align="left">0.90</td>
-</tr>
-<tr class="even">
-<td align="left">NaHCO<span class="math inline">\(_{3}\)</span></td>
-<td align="left">25</td>
-<td align="left">84.01</td>
-<td align="left">1.05</td>
-</tr>
-<tr class="odd">
-<td align="left">KCl</td>
-<td align="left">2.5</td>
-<td align="left">74.55</td>
-<td align="left">0.09</td>
-</tr>
-<tr class="even">
-<td align="left">NaH<span class="math inline">\(_{2}\)</span>PO<span class="math inline">\(_{4}\)</span></td>
-<td align="left">1.25</td>
-<td align="left">119.98</td>
-<td align="left">0.07</td>
-</tr>
-<tr class="odd">
-<td align="left">C<span class="math inline">\(_{3}\)</span>H<span class="math inline">\(_{3}\)</span>NaO<span class="math inline">\(_{3}\)</span></td>
-<td align="left">3</td>
-<td align="left">110.04</td>
-<td align="left">0.17</td>
-</tr>
 </tbody>
 </table>
-<p>Add 250 <span class="math inline">\(\mu\)</span>l 1M CaCl<span class="math inline">\(_{2}\)</span> to 500 ml to create final concentration of 0.5 mM<br />
-Add 3,500 <span class="math inline">\(\mu\)</span>l 1M MgCl<span class="math inline">\(_{2}\)</span> to 500 ml to create final concentration of 7 mM<br />
-Adjust osmolarity to 305 <span class="math inline">\(\pm\)</span> 10 mOsm<br />
-Cool 200 ml to ~ ice temperature (~ 4<span class="math inline">\(^o\)</span>C) and oxygenate with 95 % O<span class="math inline">\(_{2}\)</span> / 5 % CO<span class="math inline">\(_{2}\)</span><br />
-Warm 250 ml in slice storage chamber to 37 <span class="math inline">\(^o\)</span>C <span class="math inline">\(\pm\)</span> 2<span class="math inline">\(^o\)</span>C and oxygenate with 95 % O<span class="math inline">\(_{2}\)</span> / 5 % CO<span class="math inline">\(_{2}\)</span></p>
-<p><strong>2. Prepare dissection room and vibratome</strong><br />
-Place dissection tools on ice (large and small scissors, scalpel, spatula, spoon and petri dishes)<br />
-Perform vibro-check on ceramic blade to minimise vertical vibrations<br />
-Adjust vibratome settings to the following:</p>
+<p><img src="https://youtu.be/EPYVjMOPcTE" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🤔 </font> QUESTIONS ABOUT ACUTE SLICES</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
+<div data-label="acute_slice_questions-1" class="tutorial-question panel-body">
+<div id="acute_slice_questions-1-answer_container" class="shiny-html-output"></div>
+<div id="acute_slice_questions-1-message_container" class="shiny-html-output"></div>
+<div id="acute_slice_questions-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="acute_slice_questions-2" class="tutorial-question panel-body">
+<div id="acute_slice_questions-2-answer_container" class="shiny-html-output"></div>
+<div id="acute_slice_questions-2-message_container" class="shiny-html-output"></div>
+<div id="acute_slice_questions-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div></p>
+</div>
+<div id="section-b.-organotypic-slices" class="section level2">
+<h2>1b. Organotypic slices</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🎬 </font> Virtual lab demo: Preparing organotypic hippocampal slices (27 mins)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><img src="https://youtu.be/GvUg0wiu_p8" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🤔 </font> QUESTIONS ABOUT ORGANOTYPIC SLICES</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
+<div data-label="organotypic_slice_questions-1" class="tutorial-question panel-body">
+<div id="organotypic_slice_questions-1-answer_container" class="shiny-html-output"></div>
+<div id="organotypic_slice_questions-1-message_container" class="shiny-html-output"></div>
+<div id="organotypic_slice_questions-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="organotypic_slice_questions-2" class="tutorial-question panel-body">
+<div id="organotypic_slice_questions-2-answer_container" class="shiny-html-output"></div>
+<div id="organotypic_slice_questions-2-message_container" class="shiny-html-output"></div>
+<div id="organotypic_slice_questions-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div></p>
+</div>
+<div id="section-patch-clamp-recording" class="section level2">
+<h2>2. Patch clamp recording</h2>
+<p>Now we have prepared our slices it’s time to actually record from them!</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🎬 </font> Virtual lab demo: Patch clamp in brain slices (37 mins)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><img src="https://youtu.be/jETRgJp7DZY" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🤔 </font> QUESTIONS ABOUT PATCH CLAMP</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
+<div data-label="patchclamp_questions-1" class="tutorial-question panel-body">
+<div id="patchclamp_questions-1-answer_container" class="shiny-html-output"></div>
+<div id="patchclamp_questions-1-message_container" class="shiny-html-output"></div>
+<div id="patchclamp_questions-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="patchclamp_questions-2" class="tutorial-question panel-body">
+<div id="patchclamp_questions-2-answer_container" class="shiny-html-output"></div>
+<div id="patchclamp_questions-2-message_container" class="shiny-html-output"></div>
+<div id="patchclamp_questions-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div></p>
+</div>
+<div id="section-detecting-mepscs" class="section level2">
+<h2>3. Detecting mEPSCs</h2>
+<p>In the section we will be analysing some of the data like the ones we generated during the experiment seen in the previous topic. Synaptic events are particularly small, and some of them can be hard to distinguish from background noise. There is lots of software available to detect spontaneous synaptic currents. We use an open-source software designed to use time course information about the events of interest to help identify events occur, extract those parts of the recording and align the putative events. This software, developed by our lab at Sussex, is called Eventer (<a href="https://sourceforge.net/projects/eventer/" class="uri">https://sourceforge.net/projects/eventer/</a>) and it facilitates speedy and reproducible analysis of spontaneous synaptic currents.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> 🎬 </font> Virtual lab training: Learning how to use Eventer</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><img src="https://www.youtube.com/watch?v=gaRo8SijUtg&amp;t=34s" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><font size="7"> ❗ </font> ANALYSIS OF mEPSCs USING EVENTER</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<div id="section-start-the-software" class="section level3">
+<h3>Start the software</h3>
+<p>If the Eventer software is not already loaded, double click on the Eventer icon visible on the desktop. It looks like this:</p>
+<p><left> <img src="images/Eventer_icon.png" style="width:10.0%" /><br />
+</left></p>
+</div>
+<div id="section-settings-we-need-to-check-before-loading-the-data" class="section level3">
+<h3>Settings we need to check before loading the data</h3>
+<p>Before selecting the data file we want to load, we need to set:</p>
 <ul>
-<li>Slice thickness = 250 <span class="math inline">\(\mu\)</span>m</li>
-<li>Amplitude = 1 mm</li>
-<li>Approach speed = 0.09 mm/s<span class="math inline">\(^-1\)</span></li>
+<li>which recording channel we want to load, and</li>
+<li>whether we want to split the recordings into smaller waves settings.</li>
 </ul>
-<p>Cool slicing plate and chamber in freezer for 20-30 minutes.</p>
-<p><strong>3. Culling and dissection</strong><br />
-Cull mice via cervical dislocation and confirm death via exsanguination<br />
-Remove skin from rostral to caudal with surgical scalpel<br />
-Make two small cuts at the base of the cranium before cutting the cranium from caudal to rostral in one delicate cut.<br />
-Remove the cranium with forceps. Two small cuts near the olfactory bulbs may help facilitate this process.<br />
-Remove hemisphere from the skull and place into ice cold physiological saline<br />
-The above process should take &lt; ~ 1 minute and involve minimal damage to the brain.<br />
-Allow to cool for ~ 1 minute in the ice-cold sucrose, be careful to ensure the bubbles don’t agitate the brain</p>
-<p><strong>4. Slicing</strong><br />
-Whilst cooling retrieve the slicing apparatus (plate and chamber) from the freezer and attach to the vibratome<br />
-Wipe the plate dry and apply cyanoacrylate glue<br />
-Place medial surface on sucrose soaked filter paper and remove the cerebellum<br />
-Hemi-sect the brain, then perform the ‘magic cut’, removing 10-20% of brain matter from the dorsal surface<br />
-Place onto the cyanoacrylate glued surface so the ‘magic cut’ surface comes into contact with the glue and the ventral surface is up<br />
-Apply a few drops of ice cold sucrose to the hemisphere now to prevent glue riding up<br />
-Place the stage into the vibratome and fill quickly with sucrose, ensuring the solution is still bubbling<br />
-Prepare slices from the brain with the blade at an approach angle of ~ 18%^o%<br />
-Transfer slices to the storage chamber upside-down if possible as the integrity of the superficial surface is better<br />
-From the last slice, start a timer for 30 minutes recovery time before maintenance at room temperature (ensure depth of recovery is shallow)<br />
-Good slices appear to have a peanut shaped hippocampus and clear striation in the CP</p>
-<center>
-<img src="images/magic.png" style="width:100.0%" /><br />
-<br> <strong>Figure 1</strong> <em>‘Magic’ slice angle</em>
-</center>
-<p><strong>Video Protocol</strong><br />
-<img src="https://www.youtube.com/watch?v=gaRo8SijUtg&amp;t=34s" /></p>
-<center>
-<strong>Figure 2</strong> <em>Video of acute brain slicing</em>
-</center>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> 🤔 </font> ACUTE SLICING QUESTIONS</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
-<div data-label="questions-1" class="tutorial-question panel-body">
-<div id="questions-1-answer_container" class="shiny-html-output"></div>
-<div id="questions-1-message_container" class="shiny-html-output"></div>
-<div id="questions-1-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div><div class="panel panel-default">
-<div data-label="questions-2" class="tutorial-question panel-body">
-<div id="questions-2-answer_container" class="shiny-html-output"></div>
-<div id="questions-2-message_container" class="shiny-html-output"></div>
-<div id="questions-2-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div></p>
-</div>
-</div>
-<div id="section-recording" class="section level2">
-<h2>2. Recording</h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="10"> ❗ </font> TODO FOR ANDY</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Video of recording procedure inserted here</td>
-</tr>
-<tr class="even">
-<td align="left">Any introduction to this page</td>
-</tr>
-<tr class="odd">
-<td align="left">Update questions for this section</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<div id="section-protocol-1" class="section level3">
-<h3>Protocol</h3>
-<p><strong>1. Artificial cerebrospinal fluid recording solution &amp; intracellular solution prep</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Reagent</th>
-<th align="left">mM</th>
-<th align="left">mw</th>
-<th align="left">g/500 ml</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">NaCl</td>
-<td align="left">125</td>
-<td align="left">8.44</td>
-<td align="left">3.65</td>
-</tr>
-<tr class="even">
-<td align="left">D-Glucose</td>
-<td align="left">10</td>
-<td align="left">180.16</td>
-<td align="left">0.90</td>
-</tr>
-<tr class="odd">
-<td align="left">NaHCO<span class="math inline">\(_{3}\)</span></td>
-<td align="left">25</td>
-<td align="left">84.01</td>
-<td align="left">1.05</td>
-</tr>
-<tr class="even">
-<td align="left">KCl</td>
-<td align="left">2.5</td>
-<td align="left">74.55</td>
-<td align="left">0.09</td>
-</tr>
-<tr class="odd">
-<td align="left">NaH<span class="math inline">\(_{2}\)</span>PO<span class="math inline">\(_{4}\)</span></td>
-<td align="left">1.25</td>
-<td align="left">119.98</td>
-<td align="left">0.07</td>
-</tr>
-<tr class="even">
-<td align="left">C<span class="math inline">\(_{3}\)</span>H<span class="math inline">\(_{3}\)</span>NaO<span class="math inline">\(_{3}\)</span></td>
-<td align="left">1</td>
-<td align="left">110.04</td>
-<td align="left">0.06</td>
-</tr>
-</tbody>
-</table>
-<p>Oxygenate with 95 % O<span class="math inline">\(_{2}\)</span> / 5 % CO<span class="math inline">\(_{2}\)</span><br />
-<br> Add 250 <span class="math inline">\(\mu\)</span>l 1M CaCl<span class="math inline">\(_{2}\)</span> to 50 ml to create final concentration of 5 mM<br />
-Add 1 <span class="math inline">\(\mu\)</span>l 1M MgCl<span class="math inline">\(_{2}\)</span> to 50 ml to create final concentration of 0.02 mM<br />
-Add 25 <span class="math inline">\(\mu\)</span>l 1 mM TTX to 50 ml to create final concentration of 500 nM<br />
-Add 250 <span class="math inline">\(\mu\)</span>l 5 mM PTX to 50 ml to create final concentration of 25 <span class="math inline">\(\mu\)</span>M<br />
-Add 50 <span class="math inline">\(\mu\)</span>l 10 mM CGP to 50 ml to create final concentration of 10 <span class="math inline">\(\mu\)</span>M<br />
-<br> Adjust osmolarity to 305 <span class="math inline">\(\pm\)</span> 10 mOsm before warming to 30<span class="math inline">\(^o\)</span>C <span class="math inline">\(\pm\)</span> 2<span class="math inline">\(^o\)</span>C<br />
-Allow intracellular solution to thaw on ice. Osmolarity should be 295 <span class="math inline">\(\pm\)</span> 10 mOsm</p>
-<p><strong>2. Prepare rig</strong><br />
-Ensure amplifier, NiDaQ, SliceScope and inline heater are all switched on<br />
-Pull glass pipettes with a tip diamter between 1-3 M<span class="math inline">\(\Omega\)</span><br />
-Ensure solution perfusing through the bath evenly and the ground electrode is submerged<br />
-Submerge slice in bath solution and leave for 10 minutes for sucrose to wash off</p>
-<p><strong>3. Patching</strong><br />
-Locate healthy cell (proud, defined edges, smooth surface)<br />
-Apply ~65 mbar pressure before entering solution and navigate the electrode towards the slice<br />
-Approach cell until dimple forms on surface of neuron<br />
-Quickly release pressure and allow resistance to increase until a G<span class="math inline">\(\Omega\)</span> seal is formed<br />
-Clamp the cell to -65 mV and compensate for fast and slow capacitance<br />
-Break the cell membrane by applying small amounts of negative pressure and apply the ‘zap’ button too<br />
-Ensure access resistance is below 20 M<span class="math inline">\(\Omega\)</span> (applying negative pressure if necessary) and resting current is stable<br />
-Allow the Cs based intracellular solution a couple of minutes to equilibriate with the internal solution within the neuron<br />
-Adjust gain, filter and sampling frequency as appropriate<br />
-<em>In these recordings (Gain = 100, Filter = 2 kHz low pass, Sampling = 20 kHz)</em><br />
-Record!</p>
-<p><strong>Video Protocol</strong><br />
-<img src="https://www.youtube.com/watch?v=gaRo8SijUtg&amp;t=34s" /></p>
-<center>
-<strong>Figure 3</strong> <em>Video of whole cell patch clamp from brain slices</em>
-</center>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> 🤔 </font> ACUTE SLICING QUESTIONS</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
-<div data-label="questions-2-1" class="tutorial-question panel-body">
-<div id="questions-2-1-answer_container" class="shiny-html-output"></div>
-<div id="questions-2-1-message_container" class="shiny-html-output"></div>
-<div id="questions-2-1-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div><div class="panel panel-default">
-<div data-label="questions-2-2" class="tutorial-question panel-body">
-<div id="questions-2-2-answer_container" class="shiny-html-output"></div>
-<div id="questions-2-2-message_container" class="shiny-html-output"></div>
-<div id="questions-2-2-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div></p>
-</div>
-</div>
-<div id="section-eventer" class="section level2">
-<h2>3. Eventer</h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="10"> ❗ </font> TODO FOR ANDY</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Check instructions here make sense</td>
-</tr>
-<tr class="even">
-<td align="left">Include questions for this section as per the previous two sections</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<div align="justify">
-<p>In the section we will be analysing some of the data we generated during the experiment seen previously. Synaptic events are particularly small, and can frustratingly look quite similar to the background noise. For this reason we use a software, built in house, called Eventer that dramatically improves the speed and reproducibility of this analysis. Feel free to refresh yourself with some of the protocol in the previous section to remind yourself what type of events these are and why.</p>
-<h3 id="section-preload-settings">Preload settings</h3>
-<p>Choose your channel and split settings. Only some data formats allow for multiple recording channels, so unless you need to, the channel feature can be left at 1. Split should only be used if your data varies in length or if you want to split a continuous recording wave into smaller chunks for parallel processing.</p>
+<p>Only some data formats allow for multiple recording channels; the recordings you will analyse only have 1 channel so the <code>Channel</code> setting can be left at the default value of 1. Split can be used if you want to split a continuous recording wave into smaller waves for parallel processing or to synchronous artifacts (e.g. current transients resulting from test pulses). The recording you will analyse is 2 minutes long with test pulses delivered every 30 seconds. Therefore, the first thing to do is set the <code>Split</code> value to 30 seconds. This will separate the 2 minute recording into 4 waves that are 30 seconds long each.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.13.png" style="width:100.0%" /><br />
-<br> <strong>Figure 4</strong> <em>Pre-load settings in Eventer</em>
+<br> <strong>Figure 1</strong> <em>Pre-load settings in Eventer</em>
 </center>
-<p><br> <br></p>
-<p><font size="4"></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> 👼 </font> TIP</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>Need to change the split length?</strong> <br> <em>To do so, the file must be closed, the split length changed, and then the file loaded again</em></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-loading-your-data">Loading your data</h3>
-<p>Choose which data you wish to analyse. Multiple data sets can be analysed at once. Eventer will merge these data sets together so ensure you are loading data that you want merged. To load multiple data sets to be merged, simply repeat the loading process shown below.</p>
+</div>
+<div id="section-loading-your-data" class="section level3">
+<h3>Loading your data</h3>
+<p>Click the <code>Load</code> button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: <code>S:\ATiN\Tutorial\Eventer\</code><br />
+Ask a tutor if you do not know which file to load.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.18.png" style="width:100.0%" /><br />
-<br> <strong>Figure 5</strong> <em>Loading your data in Eventer</em>
+<br> <strong>Figure 2</strong> <em>Loading your data in Eventer</em>
 </center>
-<p><br> <br></p>
-<p><font size="4"></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>Please now load</strong> <code>filepath\filename</code></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-visualising-your-data">Visualising your data</h3>
-<p>Eventer includes a preview tab for immediate visualisation of your data upon loading. To inspect the data in more detail, the ‘Pop-up Graph’ should be used as shown here. This graph can then be zoomed and dragged to located individual events.</p>
+</div>
+<div id="section-visualising-your-data" class="section level3">
+<h3>Visualising your data</h3>
+<p>Eventer includes a preview tab for immediate visualisation of your data upon loading. To preview each of the waves, click on the <code>Wave</code> dropdown menu and select a wave number. To inspect the data in more detail, the ‘Pop-up Graph’ should be used as shown here. This graph can then be zoomed and dragged to located individual events using the tools located in the toolbar.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.23.png" style="width:100.0%" /><br />
-<br> <strong>Figure 6</strong> <em>Visualising your data in Eventer</em>
+<br> <strong>Figure 3</strong> <em>Visualizing your data in Eventer</em>
 </center>
 <p><font size="4"></p>
 <table>
@@ -575,25 +400,7 @@ Record!</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><em>The synaptic events you are seeing are all excitatory, so by convention downwards at this holding potential, however the test pulse is still visible and very large. At this point, it’s advisable to exclude these from your recordings. This can be done individually for every pulse you see, or you can split recording so that the event you’re looking to exclude is at the beginning of each ‘wave’ at the same time. This will make it very easy to exclude them all with one click!</em></td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Please now close your recording, changing the split interval to the duration of the test pulse interval, then reload the file <br> You should now see the test pulse at the beginning of each wave</td>
+<td align="left"><em>Hover the mouse over features on the Eventer interface to get a short description or tooltip.</em></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -601,268 +408,205 @@ Record!</p>
 </tbody>
 </table>
 <p></font></p>
-<h3 id="section-excluding-regions-from-your-analysis">Excluding regions from your analysis</h3>
-<p>It is possible that there are regions of your data that you want to be excluded from the analysis. For example, this could be a particularly noisy section of recording or the inclusion of a test pulse as shown here. To exclude these regions, open the exclude tab and regions to be excluded can either be manually typed in or selected using the highlighted button. Selecting this button will bring up cursors similar to the template selection window.</p>
+</div>
+<div id="section-excluding-regions-from-your-analysis" class="section level3">
+<h3>Excluding regions from your analysis</h3>
+<p>It is possible that there are regions of your data that you want to be excluded from the analysis. For example, this could be a particularly noisy section of recording or the inclusion of a test pulse as shown here. The synaptic events we recorded are all excitatory, so by convention downwards at this holding potential, however the current transients resulting from the test pulse are still visible and very large. These should be apparent near the start of the wave - we will exclude these artifacts from the analysis. To exclude these regions, open the <code>Exclude</code> tab and either:</p>
+<ul>
+<li>manually type in the start and end time of the exclusion zone around the test pulse, or<br />
+</li>
+<li>click the button decorated with a cursor pointer and click twice on the pop-up graph (Figure 7), before and after the artifact</li>
+</ul>
+<p>Since the artifact occurs at the same time in all waves, click the button <code>Apply to all waves</code>.</p>
+<p>Look through the four waves again - are there any any periods of the recording where the baseline is unstable or the recording noise transiently becomes larger, which you might want to exclude. (Note that you probably won’t want to apply those additional exclusion zones at the same time in all the waves!)</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.40.png" style="width:100.0%" /><br />
-<strong>Figure 7</strong> <em>Excluding regions from your analysis in Eventer</em>
+<strong>Figure 4</strong> <em>Excluding regions from your analysis in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Exclude the test pulse from your current wave, and then apply this setting to all waves</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-prefiltering-your-data">Prefiltering your data</h3>
-<p>It is possible that excess noise is still present in your data that may not have been isolated during data acquisition. To help visualise data, Eventer enables the user to pre-filter their data through high- and low-pass filter cut offs. Shown here, a 1 kHz low-pass filter is applied to the data in the detection tab.</p>
+</div>
+<div id="section-filtering-your-data" class="section level3">
+<h3>Filtering your data</h3>
+<p>It is possible that excess high frequency noise is still present in your data that may not have been isolated during data acquisition. Eventer enables the user to filter their data through high- and low-pass filter cut offs. In the figure below, a 1 kHz <strong>low-pass</strong> filter has been set. To apply a 1 kHz low pass filter to your data, click the <code>Detection</code> tab, tick the appropriate <code>On/Off</code> checkbox and type 1000 Hz into the field labeled <code>Low-pass Filter Cut-Off</code>.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.30.png" style="width:100.0%" /><br />
-<strong>Figure 8</strong> <em>Pre-filtering your data in Eventer</em>
+<strong>Figure 5</strong> <em>Filtering your data in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Apply a 1 kHz low pass filter to your data</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-defining-your-event-template">Defining your event template</h3>
-<p>In the template tab you can set a template event for the software to compare your data against. This can be set manually if the rise and decay parameters of your events are known, or can be done through opening the ‘Pop-up Graph’ as mentioned before and selecting the button highlighted here. This will allow the user to select two points; one before and one after the event of interest. The time constants will then be in the boxes below the highlighted button and should then be copied into boxes above before selecting the button ‘Apply to all waves’. It is worth locating an event in the ‘Pop-up Graph’ before defining the time constants and that the sign of your events is correctly stated in the detection panel.</p>
+</div>
+<div id="section-defining-your-event-template" class="section level3">
+<h3>Defining your event template</h3>
+<p>We now must define a model template EPSC waveform that Eventer will use to detect the spontaneous mEPSCs by deconvolution. The deconvolutioon method used is based on [Pernía-Andrade et al., 2012] (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471482/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471482/</a>). The model event is defined by the sum of two exponentials using the following equation:</p>
+<p><span class="math display">\[f(t) = exp \left (\frac{-t}{\tau_{decay}} \right ) - exp\left (\frac{-t}{\tau_{rise}} \right )\]</span> <font size="2"><span class="math display">\[\textrm{Where}\ t \ \textrm{is time},\ \tau_{decay}\ \textrm{is the decay time constant and}\ \tau_{rise}\ \textrm{is the rise time constant.}\]</span></font></p>
+<p>Select the <code>Template</code> tab next to load the interface for this task. Click on the <code>Pop-up Graph</code> button and zoom in on an exemplary mEPSC. Next, click the button decorated with the cursor pointer (highlighted in the figure below) and click on the pop-up graph at two positions; one just before the mEPSC and the other after the mEPSC has decayed. Eventer will try to fit a model mEPSC waveform to the selected data. The time constants will then be in the boxes below the highlighted button and should then be copied into boxes above before selecting the button <code>Apply to all waves</code>. Ensure the sign of your events is correctly assigned as <code>-</code>.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.35.png" style="width:100.0%" /><br />
-<strong>Figure 9</strong> <em>Defining your event template in Eventer</em>
+<strong>Figure 6</strong> <em>Defining your event template in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Define your event template carefully, then apply the <code>Rise</code> and <code>Decay</code> fit paremeters of your template to all waves</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-parallel-processing">Parallel Processing</h3>
-<p>If you wish to use parallel processing which will speed up analysis on newer computers, you can choose the number of workers. The limit of how many workers you can have is dependent on how many cores and threads your CPU has. After the worker number has been chosen, check the parallel box and wait for the workers to initialize.</p>
-<center>
-<img src="images/Screenshot%202020-08-18%20at%2016.09.45.png" style="width:100.0%" /><br />
-<strong>Figure 10</strong> <em>Enabling parrellel processing in Eventer</em>
-</center>
-<p><font size="4"></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> 👼 </font> TIP</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Don’t worry too much about this for your recordings as they’re not too long!</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-running-your-analysis">Running your analysis</h3>
-<p>Once the user is happy with the settings for their analysis, open the output tab and ensure the data will be outputted into the desired output format and saved to the appropriate location. By default this will create a folder named ‘eventer.output’ in the current working directory that the data was located. Choose which waves you would like stored in the analysis by either going through each wave individually and selecting/deselecting the store checkbox, or click the store all waves button. Unless a new output folder is specified for new analysis on the same dataset, it will be overwritten when performing new analysis. Changing the box on the right from ‘Current’ to ‘Batch’ will tell Eventer that the analysis can be performed on the batch of waves stored, rather than solely on the current wave. If the user has not loaded multiple files or split the recording then ‘Current’ and ‘Batch’ will both be the same. Having confirmed these settings the user can hit ‘Run’ and the light will turn green indicating analysis is in progress.</p>
+</div>
+<div id="section-running-your-analysis" class="section level3">
+<h3>Running your analysis</h3>
+<p>We now need to ensure the that output of the analysis will be what and where we want it to be. Click the <code>Output</code> tab to show the range of options available then click the <code>Output folder</code> button <strong>and name it with your surname</strong>.</p>
+<p>Next, click the <code>Wave Format</code> drop-down menu and select <code>HDF5 (Stimfit) binary (.h5)</code> - this is because we will analyse further the detected and aligned mEPSCs using another software (Stimfit) in the next topic.</p>
+<p>Next, click the <code>Store all waves</code> button to ensure that the analysis is applied to all 4 waves.</p>
+<p>Next, click the drop-down menu (highlighted in the figure below) and change it from <code>Current</code> to <code>Batch</code> - this will tell Eventer to analyse all stored waves.</p>
+<p>Having confirmed all these settings the user can hit ‘Run’ and the light will turn green indicating analysis is in progress.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.50.png" style="width:100.0%" /><br />
-<strong>Figure 11</strong> <em>Running your analysis in Eventer</em>
+<strong>Figure 8</strong> <em>Running your analysis in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> 🤔 </font> QUESTION</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Should you be in <strong>Batch</strong> or <strong>Current</strong> mode?</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Define your output folder as the name of your group and then run your analysis!</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-accessing-your-results">Accessing your results</h3>
-<p>After running the analysis, Eventer will open multiple figures. A quick summary of results is also available in the summary tab as shown here. The rest of your results will be saved in the root directory in the previously specified output folder.</p>
+</div>
+<div id="section-accessing-your-results" class="section level3">
+<h3>Accessing your results</h3>
+<p>After running the analysis, Eventer will open multiple figures. A quick summary of results is also available in the summary tab as shown here. Your results will be saved in the output folder that you specified with your surname.</p>
+<p><code>S:\ATiN\Tutorial\Eventer\&lt;your_surname&gt;</code></p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.09.55.png" style="width:100.0%" /><br />
-<strong>Figure 12</strong> <em>Accessing your results in Eventer</em>
+<strong>Figure 9</strong> <em>Summary of your results from Eventer</em>
 </center>
-<h3 id="section-training-a-machine-learning-model">Training a machine learning model</h3>
-<p>Eventer also includes an option to enable users train a machine learning model against an exemplary set of data. To do this, open the detection tab and change the event criterion to ‘Machine Learning’ before ticking the ‘Training Mode’ tickbox. Running the analysis now will open up a window that will ask users to classify events as either events or not. A pop-up window will allow the user to also name their model. Move through the events selecting or deselecting events where appropriate until all events are classified then click complete. When selecting whether an event is indeed actually an event, it is important that the green line shown above is exactly at the start of where you perceive the event to be otherwise the model may become inaccurate.</p>
+</div>
+<div id="section-training-a-machine-learning-model" class="section level3">
+<h3>Training a machine learning model</h3>
+<p>Eventer also includes an option to enable users train a machine learning model against an exemplary set of data. To do this, click the <code>Detection</code> tab, then set the <code>Event Criterion</code> drop-down menu to <code>Machine Learning</code> before ticking the <code>Training Mode</code> tick box. Running the analysis now will open up a window that will ask users to classify event detection as true or false. A pop-up window will appear asking for you to name your model - leave this as your surname. Click the <code>Store</code> button again, followed by the <code>Run</code> button.</p>
+<p>After the analysis has completed, a pop-up window titled ‘Classify events’ will appear. In this window, click the <code>Start</code> button and then the <code>Select all</code> button. To scroll up or down through the detected events, press the <code>K</code> or <code>M</code> keys respectively on your keyboard.</p>
+<p>Use you judgment to make a call on whether you think the mEPSC (starting at the time of the vertical <font color="green">green</font> line) should be considered a real event. If you think Eventer falsely detected an event, press the <code>R</code> key to deselect it. When you have visually inspected and classified all of the candidate mEPSCs, click the <code>Complete</code> button to close the <code>Classify events</code> window and train a machine learning model using the Random Forests algorithm. This algorithm builds decision trees using various predefined features of the data to best satisfy your classification. Upon completing the classification and starting the training, you will be presented with a plot showing the out-of-bag classification error which can briefly be described as a measure of the prediction error using bootstrap aggregating (bagging) to subsample data samples used for training. The prediction error should then stabilize well before reaching 128 trees (which is the default number of trees used by the implementation of Random Forests in Eventer).</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.10.00.png" width="850" /><br />
-<strong>Figure 13</strong> <em>Training a machine learning model in Eventer</em>
+<strong>Figure 10</strong> <em>Training a machine learning model in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Classify events as either true events or false positives</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
-<h3 id="section-using-your-model">Using your model</h3>
-<p>To then use the trained model on subsequent analysis, the user can then deselect the training mode and select load model in the detection tab. The trained model will be stored in the eventer output folder as a .mlm file as shown here. This model is now available for use on a new dataset, distinct from the set it was trained on. Upon completing your analysis with your machine learning model, you will be presenting with a plot showing the out-of-bag classification error which can briefly be described as a measure of the prediction error using bootstrap aggregating (bagging) to subsample data samples used for training. The prediction error should then stabilize well before reaching 128 trees (which is the default number of trees used by the implementation of Random Forests in Eventer).</p>
+</div>
+<div id="section-using-a-machine-learning-model" class="section level3">
+<h3>Using a machine learning model</h3>
+<p>The real beauty of machine learning is that trained models can be used to apply your criteria of selection or classification to a set of new data. Lets give this a go using a model prepared in our lab using a different (but comparable) recording.</p>
+<p>Click on the <code>Detection</code> tab - you will notice that the <code>Training mode</code> checkbox is already unchecked and the machine learning model (.mlm) file listed is the one you just created. that will and select load model in the detection tab. The trained model will be stored in the eventer output folder as a .mlm file as shown here. This model is now available for use on a new dataset, distinct from the set it was trained on.</p>
+<p>Click the <code>Load model</code> button, navigate to <code>S:\ATiN\Tutorial\Eventer\model</code> in the file dialog and load the file named <code>model.mlm</code>.</p>
+<p>To ensure we save the output of this analysis to a different place, click the <code>Output</code> tab to show the range of options available then click the <code>Output folder</code> button <strong>and name it with your surname followed by _mlm </strong>.</p>
+<p>Finally, click the <code>Store</code> button followed by the <code>Run</code> button.</p>
 <center>
 <img src="images/Screenshot%202020-08-18%20at%2016.10.05.png" style="width:100.0%" /><br />
-<strong>Figure 14</strong> <em>Using your machine learning model in Eventer</em>
+<strong>Figure 11</strong> <em>Using a machine learning model in Eventer</em>
 </center>
-<p><font size="4"></p>
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><font size="7"> ❗ </font> TASK</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Please now load the model named <code>model</code>, stored at <code>filepath\model</code> and run your analysis using this model</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p></font></p>
+<p><br></p>
 </div>
 </div>
-<div id="section-stimfit" class="section level2">
-<h2>4. Stimfit</h2>
-<table>
-<thead>
-<tr class="header">
-<th align="left"><font size="10"> ❗ </font> TODO FOR ANDY</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Format properly for markdown, i made a start so it was readable</td>
-</tr>
-<tr class="even">
-<td align="left">Any introduction to this page</td>
-</tr>
-<tr class="odd">
-<td align="left">Include questions for this page</td>
-</tr>
-<tr class="even">
-<td align="left">Update instructions so relevent for this session</td>
-</tr>
-<tr class="odd">
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p>Advanced Techniques in Neuroscience Separation and analysis of AMPA and NMDA receptor-mediated synaptic conductances Visit the following webpage to familiarise yourself with Stimfit before starting: <a href="https://neurodroid.github.io/stimfit/manual/getting_started.html" class="uri">https://neurodroid.github.io/stimfit/manual/getting_started.html</a></p>
-<ol style="list-style-type: decimal">
-<li><p>Load the python electrophysiology software, Stimfit</p></li>
-<li><p>Import our lab python module by typing in the Python shell: import penn</p></li>
-<li><p>Data was previously acquired by recording 10 evoked EPSCs at 6 different holding potentials (-100, -80, -60, -40, -20, 0 and +20 mV). Using the EPSCs acquired at -100 mV we will first demonstrate how to obtain an average EPSC. Load the raw data file by typing in the command shell: penn.analysis.loadacq4() Using the explorer in the file open dialog, navigate to: Z:_in_neuro436R-2a_001_mixed_eEPSC_000\000 Select the raw data file Clamp2.ma and click open.</p></li>
-<li><p>The first trace is shown. Check the ‘Show selected’ box, press Ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. This will reveal, select and show an overlay of the 10 EPSCs.</p></li>
-<li><p>Click the ‘Average’ button to average the EPSCs.</p></li>
-<li><p>Close all the files by typing into the Python shell: close_all()</p></li>
-<li><p>We have done the averaging procedure for recordings at all of the holding potentials and saved the average EPSCs for you. We will now load all the average EPSCs for a cell recorded at the different holding potentials, convert the current recordings to conductance and separate the AMPA and NMDA conductances. Type into the Python shell: penn.analysis.combiRec(0.01) Using the explorer in the file open dialog, navigate to: Z: techniques_in_neuro436R-2a_001_mixed_eEPSC_000 Select the file ‘2’ and click open.</p></li>
-<li><p>Click the ‘Restore’ button</p></li>
-<li><p>Find the window with the recording of the ‘Mixed AMPA/NMDA-mediated conductance’ by selecting the window and typing in the command shell: get_recording_comment() Tip: To save you from repeatedly typing the same command, mouse click at the command prompt in the Python Shell and press Ctrl + up arrow to bring up the previous command etc.</p></li>
-<li><p>The EPSC shown is the average EPSC at -100 mV. Select this AMPA-EPSC by clicking the green tick button.</p></li>
-<li><p>As before, now find the window with the recording of the ‘NMDA-mediated conductance’</p></li>
-<li><p>Uncheck the Zero-base index box and select the last recording trace (7, average NMDA-EPSC at +20 mV) and select it by clicking the green tick button.</p></li>
-<li><p>Now click Edit -&gt; New window with… -&gt; selected traces from all files</p></li>
-<li><p>Check the ‘Show selected’ box, press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes.</p></li>
-<li><p>The leak conductance is the constant offset and this was different at -100 mV and +20 mV so we need to subtract the baseline. To do this, press B and then left mouse click, hold and drag then release to select a period of baseline. Two vertical dashed green lines should appear to indicate the start and end times of the selected baseline period. Press the Return key to update measurements. (See figure below)</p></li>
-<li><p>Now click Extensions -&gt; subtract_base, check the ‘Show selected’ box then press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. In what ways do the kinetics of the EPSCs appear to differ?</p></li>
-<li><p>Now let us measure the peak amplitudes of the AMPA and NMDA conductances. Press P and then left mouse click, hold and drag then release to select a period of flanking the peak in both traces. Two vertical dashed red lines should appear to indicate the start and end times of the selected peak measurement period. Press the Return key to update measurements. Visually inspect the result to confirm that the horizontal dashed red line is level with the peak of the EPSC in the active trace (black). (See figure below)</p></li>
-<li><p>Select each trace noting down the following three measurements. Peak (from base), RT (Lo-Hi%) and T50. These correspond to the peak amplitude, the 20-80% rise time and the full-width half-maximum of the EPSC.</p></li>
-<li><p>The amplitude and kinetics are clearly different for AMPA and NMDA conductances. Let us look specifically at the kinetics by scaling the AMPA-EPSC to match the peak amplitude of the NMDA-EPSC. To do this click Extensions -&gt; peakscale, check the ‘Show selected’ box then press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. (See figure below)</p></li>
-<li><p>Let us now quantify the decay rate of the different conductances. Select trace 1 (the AMPA-EPSC), uncheck the ‘Show 2 selected’ box, press D and then left mouse click, hold and drag then release to select the region soon after the peak of the EPSC until the EPSC has decayed. Two vertical dashed grey lines should appear to indicate the start and end times of the selected period for curve fitting. (See figure below)</p></li>
-<li><p>To carry out the fit, click Extensions -&gt; biexpfit. Copy and paste the ‘Analysis results’ into notepad or an Excel spreadsheet.</p></li>
-<li><p>Let us examine the fit and confirm we are satisfied with it. Check the ‘Show selected’ box, press ctrl + A then right arrow repeatedly to scroll through the fit traces. Confirm that we have a measurement in the table for ‘Weighted tau’. If not then ask your demonstrator.</p></li>
-<li><p>Click the ‘Close’ window button (next to the ‘Restore’ button). Repeat steps 20-22 for the NMDA-EPSC (trace 2)</p></li>
-<li><p>Repeat steps 7-23 for two more cell recordings: Z: techniques_in_neuro436R-2a_002_mixed_eEPSC_000\2 Z: techniques_in_neuro436R-2a_003_mixed_eEPSC_000\2</p></li>
-<li><p>Collect the data into a spreadsheet and present bar graphs for the:</p></li>
-</ol>
-<ol style="list-style-type: decimal">
-<li>Ratio of peak AMPA/NMDA conductances</li>
-<li>20-80% rise times of the conductances</li>
-<li>Weighted tau (time constant) of AMPA- and NMDA-EPSC decay Compare the properties above between AMPA- and NMDA-EPSCs using statistical tests. How are the EPSC components differ? How are the unique properties important for the role AMPA and NMDA receptors play in synaptic transmission?</li>
-</ol>
+<div id="section-measuring-epsc-properties" class="section level2">
+<h2>4. Measuring EPSC properties</h2>
+<p>We have detected mEPSCs and we have some basic summary data about them from Eventer. Lets now get some detailed data about the amplitude and kinetics of individual events. We will achieve this using the open source software package called Stimfit.</p>
+<div id="section-start-the-software-1" class="section level3">
+<h3>Start the software</h3>
+<p>If the Stimfit software is not already loaded, double click on the Stimfit 0.13 icon visible on the desktop. It looks like this:</p>
+<p><left> <img src="images/Stimfit_icon.png" style="width:10.0%" /><br />
+</left></p>
+</div>
+<div id="section-become-familiar-with-the-stimfit-user-interface" class="section level3">
+<h3>Become familiar with the Stimfit user interface</h3>
+<p>Visit the following webpage to familiarise yourself with the Stimfit interface: <a href="https://neurodroid.github.io/stimfit/manual/getting_started.html" class="uri">https://neurodroid.github.io/stimfit/manual/getting_started.html</a></p>
+</div>
+<div id="section-load-the-a-file-of-the-aligned-and-exported-mepscs-detected-by-eventer" class="section level3">
+<h3>Load the a file of the aligned and exported mEPSCs detected by Eventer</h3>
+<p>Click on the <code>File</code> menu and click <code>Open...</code></p>
+<center>
+<img src="images/Stimfit_file_open.png" style="width:100.0%" /><br />
+<br> <strong>Figure 12</strong> <em>Open the Stimfit file open dialog</em>
+</center>
+<p><br> Then navigate to <code>S:\ATiN\Tutorial\Eventer\&lt;your_surname&gt;_mlm\eventer.output\All_events</code> and open the file called <code>event_data.h5</code></p>
+<p><br></p>
+<center>
+<img src="images/Stimfit_select_file.png" style="width:100.0%" /><br />
+<br> <strong>Figure 13</strong> <em>Select the data file for analysis</em>
+</center>
+<p><br></p>
+<p>When the file has loaded, you will see the first detected mEPSC and you can scroll through the mEPSCs (1 mEPSC per wave, or trace as Stimfit refers to them) by pressing the <code>right</code> and <code>left</code> cursor keys on your keyboard.</p>
+<center>
+<img src="images/Stimfit_file_loaded.png" style="width:100.0%" /><br />
+<br> <strong>Figure 14</strong> <em>Stimfit with the data loaded</em>
+</center>
+</div>
+<div id="section-configure-cursor-settings" class="section level3">
+<h3>Configure cursor settings</h3>
+<p>The mEPSCs are downward deflections of the current, so before we ask Stimfit to make measurements on the mEPSCs, we need to tell Stimfit that we expect peaks to be negative.</p>
+<p>First, go to the <code>Edit</code> menu and click <code>Cursor settings...</code>.</p>
+<center>
+<img src="images/Stimfit_cursor1.png" style="width:100.0%" /><br />
+<br> <strong>Figure 15</strong> <em>Loading the cursor settings window</em>
+</center>
+<p><br> The cursor settings window will then load. Under the <code>Peak</code> tab and <code>Peak direction</code> section, click the <code>Down</code> radio button.</p>
+<center>
+<img src="images/Stimfit_cursor2.png" style="width:50.0%" /><br />
+<br> <strong>Figure 16</strong> <em>Set the direction of mEPSC peak measurements</em>
+</center>
+<p><br></p>
+</div>
+<div id="section-calculate-ensemble-mean-mepsc" class="section level3">
+<h3>Calculate ensemble mean mEPSC</h3>
+<p>Lets now calculate an ensemble mean mEPSC to help us decide on where to position the cursors used for making measurements. Press <code>Ctrl + A</code> key combination to select all of the mEPSCs and then the highlighted button to average the selected traces. This will pop up a new window which you should close by clicking <code>Close</code> in the <code>File</code> menu. You will then see the ensemble mean mEPSC in <font color="blue">blue</font> overlaid onto one of the currently selected mEPSC.</p>
+<center>
+<img src="images/Stimfit_average.png" style="width:100.0%" /><br />
+<br> <strong>Figure 17</strong> <em>Calculating the ensemble mean mEPSC</em>
+</center>
+</div>
+<div id="section-set-peak-cursors" class="section level3">
+<h3>Set peak cursors</h3>
+<p>The mEPSCs are downward deflections of the current, so before we ask Stimfit to make measurements on the mEPSCs, we need to tell Stimfit that we expect peaks to be negative. Press the <code>P</code> key, then click the left mouse button where you want the peak calculation to start and click the right mouse button where you want the peak calculation to end. The start and end of the peak search region is illustrated by <font color="red">red</font> vertical dashed lines. Use the ensemble mean mEPSC as a guide for where you position these cursors.</p>
+<center>
+<img src="images/Stimfit_peak.png" style="width:100.0%" /><br />
+<br> <strong>Figure 18</strong> <em>Set the <font color="red">red</font> peak cursors</em>
+</center>
+<p><br></p>
+</div>
+<div id="section-set-the-baseline-cursors" class="section level3">
+<h3>Set the baseline cursors</h3>
+<p>The holding current is seldom exactly zero so we need to subtract the constant offset represented by the baseline preceding the mEPSC. Press the <code>B</code> key, then click the left mouse button where you want the baseline calculation to start and click the right mouse button where you want the baseline calculation to end. The start and end of the baseline region is illustrated by <font color="green">green</font> vertical dashed lines. for each mEPSC, the offset will be calculated as the mean of the sample points between these two time points. Use the ensemble mean mEPSC as a guide for where you position these cursors.</p>
+<center>
+<img src="images/Stimfit_baseline.png" style="width:100.0%" /><br />
+<br> <strong>Figure 19</strong> <em>Set the <font color="green">green</font> baseline cursors</em>
+</center>
+<p><br></p>
+</div>
+<div id="section-visualising-measurements" class="section level3">
+<h3>Visualising measurements</h3>
+<p>If you now scroll through the mEPSCs using your <code>left</code> and <code>right</code> cursor keys, you will notice that there are additional annotations, like in the figure below. See figures 10-13 and the associated text on the following web page to understand what these represent: <a href="https://neurodroid.github.io/stimfit/manual/getting_started.html" class="uri">https://neurodroid.github.io/stimfit/manual/getting_started.html</a></p>
+<center>
+<img src="images/Stimfit_measure.png" style="width:50.0%" /><br />
+<br> <strong>Figure 20</strong> <em>Measurement annotations</em>
+</center>
+<p><br> Do the annotations make sense? If not, consider going back and resetting your peak and baseline cursors.</p>
+</div>
+<div id="section-batch-analysis-of-mepsc-propeties" class="section level3">
+<h3>Batch analysis of mEPSC propeties</h3>
+<p>Now click on <code>Batch analysis...</code> under the <code>Analysis</code> menu to load a pop-up with a list of options.</p>
+<center>
+<img src="images/Stimfit_batch1.png" style="width:100.0%" /><br />
+<br> <strong>Figure 21</strong> <em>Loading the batch analysis options</em>
+</center>
+<p><br></p>
+<p>Check the boxes only for <code>Peak (from base)</code>, <code>Lo-Hi% risetime</code> and <code>Half amplitude duration</code> then press <code>OK</code>.</p>
+<center>
+<img src="images/Stimfit_batch2.png" style="width:50.0%" /><br />
+<br> <strong>Figure 22</strong> <em>Selecting batch analysis options</em>
+</center>
+<p><br></p>
+<p>A table of results will appear on the left hand side listing the amplitude, 20-80% rise time and full-width half-maximum for each event. Copy and past this data into a spreadsheet and save it in a file named with your surname in the following location: <code>S:\ATiN\Tutorial\Eventer\student_mEPSCs\</code></p>
+<center>
+<img src="images/Stimfit_batch_results.png" style="width:50.0%" /><br />
+<br> <strong>Figure 23</strong> <em>Table of results</em>
+</center>
+<p><br></p>
+</div>
+</div>
+<div id="section-report" class="section level2">
+<h2>Report</h2>
+<p>As part of your assessment you may choose to write a lab report based on this workshop. The report should be no longer than 3000 words. If you write a report for this workshop, I suggest the following structure:</p>
+<ul>
+<li><p>Title</p></li>
+<li><p>Abstract</p></li>
+<li><p>Introduction:</p></li>
+<li><p>Methods: Choose to describe the methods for preparing and recording from either acute <strong>OR</strong> organotypic hypocampal slices</p></li>
+<li><p>Results: Using the data collected from your efforts in the class and provided to you by your tutor, present and interpret mEPSC detection results obtained by: 1) manual event screening (different users), and 2) by to using a single, trained machine learning model.</p></li>
+<li><p>Discussion: Critically discuss your results and the application of the various techniques.</p></li>
+<li><p>References</p></li>
+</ul>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 # install devtools to install emoji package and learnr
-if (!base::require(package="devtools")) utils::install.packages("devtools")
 if (!base::require(package="devtools")) utils::install.packages("devtools")
 if (!base::require(package="emo")) devtools::install_github("hadley/emo")
 # attach libraries
@@ -882,19 +626,35 @@ session$onSessionEnded(function() {
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-1",     question = structure("What is the benefit of the cutting solution being ice-cold?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_a6a1460",         option = "Strengthen the cell membranes of the neurons",         value = "Strengthen the cell membranes of the neurons",         label = structure("Strengthen the cell membranes of the neurons", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_35d2613",         option = "Stop the brain overheating", value = "Stop the brain overheating",         label = structure("Stop the brain overheating", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eb11361",         option = "Slow the activity of enzymes acting to damage the slice",         value = "Slow the activity of enzymes acting to damage the slice",         label = structure("Slow the activity of enzymes acting to damage the slice", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_82f3f1a",         option = "It looks ... cool ...", value = "It looks ... cool ...",         label = structure("It looks ... cool ...", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "questions-1-answer", question = "questions-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the benefit of the cutting solution being ice-cold?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1598229162.75577, options = list()), class = c("learnr_radio", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "background_questions-1",     question = structure("Which of the following are advantages of recording from brain slices over recording in vivo?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_245be03",         option = "They are more amenable to controlled pharmacological intervention",         value = "They are more amenable to controlled pharmacological intervention",         label = structure("They are more amenable to controlled pharmacological intervention", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_99bb883",         option = "They don't involve the use of animals for experiments",         value = "They don't involve the use of animals for experiments",         label = structure("They don&#39;t involve the use of animals for experiments", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e941487",         option = "Whole-cell voltage-clamp experiments are more feasible",         value = "Whole-cell voltage-clamp experiments are more feasible",         label = structure("Whole-cell voltage-clamp experiments are more feasible", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6dd3b7d",         option = "The measurements more accurately resemble activity of neurons in a living animal",         value = "The measurements more accurately resemble activity of neurons in a living animal",         label = structure("The measurements more accurately resemble activity of neurons in a living animal", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct. Experiments on brain slices require the use of animals and removing brain tissue from the animal typically disturbs the on-going the activity of neuronal circuits.", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "background_questions-1-answer", question = "background_questions-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following are advantages of recording from brain slices over recording in vivo?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 509544806.762725, options = list()), class = c("learnr_checkbox", "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-2",     question = structure("What is the ideal mix of Na &amp; Mg in the slicing media?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_9d9003a",         option = "High Mg, High Na", value = "High Mg, High Na",         label = structure("High Mg, High Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_97f7f3e",         option = "Low Mg, Low Na", value = "Low Mg, Low Na",         label = structure("Low Mg, Low Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_928af1f",         option = "High Mg, Low Na", value = "High Mg, Low Na",         label = structure("High Mg, Low Na", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aa31246",         option = "Low Mg, High Na", value = "Low Mg, High Na",         label = structure("Low Mg, High Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "questions-2-answer", question = "questions-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the ideal mix of Na &amp; Mg in the slicing media?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1476694226.31236, options = list()), class = c("learnr_radio", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "background_questions-2",     question = structure("Which of the following would be good situations to use patch clamp recordings in brain slices?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_fc82ba8",         option = "To characterize conductances underlying neuronal signalling using voltage-clamp and pharmacological tools",         value = "To characterize conductances underlying neuronal signalling using voltage-clamp and pharmacological tools",         label = structure("To characterize conductances underlying neuronal signalling using voltage-clamp and pharmacological tools", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dafeb80",         option = "To map out functional connectivity in local circuits",         value = "To map out functional connectivity in local circuits",         label = structure("To map out functional connectivity in local circuits", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fb1f1a6",         option = "To characterize microscopic currents from single channels, which contribute to membrane conductances",         value = "To characterize microscopic currents from single channels, which contribute to membrane conductances",         label = structure("To characterize microscopic currents from single channels, which contribute to membrane conductances", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d273ac2",         option = "To perform functional and anatomical characterization of neurones in a brain region.",         value = "To perform functional and anatomical characterization of neurones in a brain region.",         label = structure("To perform functional and anatomical characterization of neurones in a brain region.", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6a95009",         option = "To examine how membrane conductances respond to specific concentrations of agents delivered inside the cell.",         value = "To examine how membrane conductances respond to specific concentrations of agents delivered inside the cell.",         label = structure("To examine how membrane conductances respond to specific concentrations of agents delivered inside the cell.", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s right! All of these are good examples of applications for patch clamp in brain slices", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "background_questions-2-answer", question = "background_questions-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following would be good situations to use patch clamp recordings in brain slices?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 1374970021.85973, options = list()), class = c("learnr_checkbox", "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-2-1",     question = structure("What is the benefit of the cutting solution being ice-cold?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_c365662",         option = "Strengthen the cell membranes of the neurons",         value = "Strengthen the cell membranes of the neurons",         label = structure("Strengthen the cell membranes of the neurons", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3555609",         option = "Stop the brain overheating", value = "Stop the brain overheating",         label = structure("Stop the brain overheating", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cccf5ae",         option = "Slow the activity of enzymes acting to damage the slice",         value = "Slow the activity of enzymes acting to damage the slice",         label = structure("Slow the activity of enzymes acting to damage the slice", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a533cd",         option = "It looks ... cool ...", value = "It looks ... cool ...",         label = structure("It looks ... cool ...", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "questions-2-1-answer", question = "questions-2-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the benefit of the cutting solution being ice-cold?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 258735085.379517, options = list()), class = c("learnr_radio", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "acute_slice_questions-1",     question = structure("Which of the following represent benefits of the cutting solution being ice-cold?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_5add298",         option = "It increases oxygen solubility in the solution",         value = "It increases oxygen solubility in the solution",         label = structure("It increases oxygen solubility in the solution", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fb7d3d1",         option = "It stops the brain overheating", value = "It stops the brain overheating",         label = structure("It stops the brain overheating", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_11a6a29",         option = "It slow the activity of enzymes acting to damage the slice",         value = "It slow the activity of enzymes acting to damage the slice",         label = structure("It slow the activity of enzymes acting to damage the slice", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_84f769e",         option = "It reduces the metabolism of the tissue and lowers the risk of hypoxia.",         value = "It reduces the metabolism of the tissue and lowers the risk of hypoxia.",         label = structure("It reduces the metabolism of the tissue and lowers the risk of hypoxia.", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_809be3f",         option = "It reduces the metabolism of the tissue and lowers the risk of acidosis.",         value = "It reduces the metabolism of the tissue and lowers the risk of acidosis.",         label = structure("It reduces the metabolism of the tissue and lowers the risk of acidosis.", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "acute_slice_questions-1-answer", question = "acute_slice_questions-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following represent benefits of the cutting solution being ice-cold?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 2027665450.55579, options = list()), class = c("learnr_checkbox", "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-2-2",     question = structure("What is the ideal mix of Na &amp; Mg in the slicing media?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_56d55de",         option = "High Mg, High Na", value = "High Mg, High Na",         label = structure("High Mg, High Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8ad5092",         option = "Low Mg, Low Na", value = "Low Mg, Low Na",         label = structure("Low Mg, Low Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3e76612",         option = "High Mg, Low Na", value = "High Mg, Low Na",         label = structure("High Mg, Low Na", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2c48ab0",         option = "Low Mg, High Na", value = "Low Mg, High Na",         label = structure("Low Mg, High Na", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "questions-2-2-answer", question = "questions-2-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the ideal mix of Na &amp; Mg in the slicing media?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 318599366.851641, options = list()), class = c("learnr_radio", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "acute_slice_questions-2",     question = structure("What is the ideal mix of Na and Mg in the sucrose-based cutting solution?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_9a3d54c",         option = "High Mg^2+^, High NaCl", value = "High Mg^2+^, High NaCl",         label = structure("High Mg<sup>2+<sup>,<\u002fsup><\u002fsup> High NaCl", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_753ca7b",         option = "Low Mg^2+^, Low NaCl", value = "Low Mg^2+^, Low NaCl",         label = structure("Low Mg<sup>2+<sup>,<\u002fsup><\u002fsup> Low NaCl", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d86571",         option = "High Mg^2+^, Low NaCl", value = "High Mg^2+^, Low NaCl",         label = structure("High Mg<sup>2+<sup>,<\u002fsup><\u002fsup> Low NaCl", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a7ba7b8",         option = "Low Mg^2+^, High NaCl", value = "Low Mg^2+^, High NaCl",         label = structure("Low Mg<sup>2+<sup>,<\u002fsup><\u002fsup> High NaCl", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "acute_slice_questions-2-answer", question = "acute_slice_questions-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the ideal mix of Na and Mg in the sucrose-based cutting solution?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 820137143.618094, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "organotypic_slice_questions-1",     question = structure("What is the pH buffering system most often used in cell culture?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_aed7873",         option = "10 mM HEPES", value = "10 mM HEPES", label = structure("10 mM HEPES", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_709a856",         option = "10 mM Tris-Cl", value = "10 mM Tris-Cl", label = structure("10 mM Tris-Cl", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6c393fd",         option = "25 mM Na-HCO<sub>3<\u002fsub>", value = "25 mM Na-HCO<sub>3<\u002fsub>",         label = structure("25 mM Na-HCO<sub>3<\u002fsub>", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_360eb67",         option = "25 mM Na-HCO<sub>3<\u002fsub> + 5% CO<sub>2<\u002fsub>",         value = "25 mM Na-HCO<sub>3<\u002fsub> + 5% CO<sub>2<\u002fsub>",         label = structure("25 mM Na-HCO<sub>3<\u002fsub> + 5% CO<sub>2<\u002fsub>", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "organotypic_slice_questions-1-answer", question = "organotypic_slice_questions-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the pH buffering system most often used in cell culture?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 1402695026.84682, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "organotypic_slice_questions-2",     question = structure("What age rodents are slices typically prepared from?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_75f4b9c",         option = "P0", value = "P0", label = structure("P0", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ea524fb",         option = "P5-7", value = "P5-7", label = structure("P5-7", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_295f975",         option = "P21", value = "P21", label = structure("P21", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_824fe8f",         option = ">P40", value = ">P40", label = structure("<blockquote>\n<p>P40<\u002fp>\n<\u002fblockquote>\n", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct! The success rate for culturing slices from rodents older than about P10 tends to drop.", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "organotypic_slice_questions-2-answer", question = "organotypic_slice_questions-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat age rodents are slices typically prepared from?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 358510399.333056, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "patchclamp_questions-1",     question = structure("What is the coating on the wires used for recording and ground electrodes?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_2c781ae",         option = "Silver", value = "Silver", label = structure("Silver", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e2089b7",         option = "Tungsten", value = "Tungsten", label = structure("Tungsten", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dd40085",         option = "Platinum", value = "Platinum", label = structure("Platinum", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_db32d78",         option = "Silver chloride", value = "Silver chloride",         label = structure("Silver chloride", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "patchclamp_questions-1-answer", question = "patchclamp_questions-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the coating on the wires used for recording and ground electrodes?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 1497909438.80248, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "patchclamp_questions-2",     question = structure("How will the current change when applying test voltage pulses for a the patch pipette in the bath -&gt; cell-attached -&gt; whole-cell configuration?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_7c070b9",         option = "large, slow transient -> very small square pulse -> large square pulse",         value = "large, slow transient -> very small square pulse -> large square pulse",         label = structure("large, slow transient -&gt; very small square pulse -&gt; large square pulse", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8a98ec",         option = "large square pulse -> very small square pulse -> large, slow transient",         value = "large square pulse -> very small square pulse -> large, slow transient",         label = structure("large square pulse -&gt; very small square pulse -&gt; large, slow transient", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a05703a",         option = "very small square pulse -> large square pulse -> large, slow transient",         value = "very small square pulse -> large square pulse -> large, slow transient",         label = structure("very small square pulse -&gt; large square pulse -&gt; large, slow transient", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_715e56b",         option = "very small square pulse -> large, slow transient -> large square pulse",         value = "very small square pulse -> large, slow transient -> large square pulse",         label = structure("very small square pulse -&gt; large, slow transient -&gt; large square pulse", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("That&#39;s correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Not quite, try again.", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "patchclamp_questions-2-answer", question = "patchclamp_questions-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nHow will the current change when applying test voltage pulses for a the patch pipette in the bath -&gt; cell-attached -&gt; whole-cell configuration?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = TRUE,     seed = 1252002716.91699, options = list()), class = c("learnr_radio", "tutorial_question")))
 </script>
  <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
@@ -903,7 +663,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","callr","checkmate","cli","compiler","crayon","datasets","desc","devtools","digest","ellipsis","emo","evaluate","fansi","fastmap","fs","generics","glue","graphics","grDevices","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lubridate","magrittr","markdown","memoise","methods","mime","pkgbuild","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","rprojroot","sessioninfo","shiny","stats","stringi","stringr","testthat","tools","usethis","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.1.8","4.0.2","3.4.4","2.0.0","2.0.2","4.0.2","1.3.4","4.0.2","1.2.0","2.3.2","0.6.25","0.3.1","0.0.0.9000","0.14","0.4.1","1.0.1","1.5.0","0.0.2","1.4.2","4.0.2","4.0.2","0.5.0","1.5.1","1.5.4","1.7.1","1.29","1.1.0.1","0.10.1","1.7.9","1.5","1.1","1.1.0","4.0.2","0.9","1.1.0","1.1.0","1.1.1","3.4.3","1.1.1","1.3.4","0.3.4","2.4.1","1.0.5","2.2.0","0.4.7","2.3","1.3-2","1.1.1","1.5.0","4.0.2","1.5.3","1.4.0","2.3.2","4.0.2","1.6.3","4.0.2","2.2.0","0.16","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","callr","checkmate","cli","compiler","crayon","datasets","desc","devtools","digest","ellipsis","emo","evaluate","fansi","fastmap","fs","generics","glue","graphics","grDevices","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lubridate","magrittr","markdown","memoise","methods","mime","pkgbuild","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","rprojroot","sessioninfo","shiny","stats","stringi","stringr","testthat","tools","usethis","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.1.9","4.0.2","3.4.4","2.0.0","2.0.2","4.0.2","1.3.4","4.0.2","1.2.0","2.3.2","0.6.25","0.3.1","0.0.0.9000","0.14","0.4.1","1.0.1","1.5.0","0.0.2","1.4.2","4.0.2","4.0.2","0.5.0","1.5.1","1.5.4","1.7.1","1.29","1.1.0.1","0.10.1","1.7.9","1.5","1.1","1.1.0","4.0.2","0.9","1.1.0","1.1.0","1.1.1","3.4.4","1.1.1","1.3.4","0.3.4","2.4.1","1.0.5","2.2.0","0.4.8","2.3","1.3-2","1.1.1","1.5.0","4.0.2","1.5.3","1.4.0","2.3.2","4.0.2","1.6.3","4.0.2","2.2.0","0.16","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
@@ -917,8 +677,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h2 class="title toc-ignore" style="display:none;">Advanced Techniques in Neuroscience</h2>
-<h3 class="subtitle"><em>Patch clamp electrophysiology in brain slices</em></h3>
+<h2 class="title toc-ignore" style="display:none;">Advanced Techniques in Neuroscience Workshop</h2>
+<h3 class="subtitle"><em>Patch clamp in brain slices</em></h3>
 <h4 class="author"><em>Penn Lab</em></h4>
 <h4 class="date"><em>04/11/2020</em></h4>
 </div>

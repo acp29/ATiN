@@ -1,9 +1,12 @@
 ---
-title: "Advanced Techniques in Neuroscience"
-subtitle: "Patch clamp electrophysiology in brain slices"
+title: "Advanced Techniques in Neuroscience Workshop"
+subtitle: "Patch clamp in brain slices"
 author: "Penn Lab"
 date: "04/11/2020"
-output: learnr::tutorial
+output:
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 # As far as i can tell css styling is the best option to play around with YAML header styling, but i'm not convinced this is really worth our time at this point. I thought i saw someone apply html styling, but i couldn't get that to work so that may be an alternative if you can get that to work - i didn't try too hard. 
 ---
@@ -18,518 +21,535 @@ library(emo)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Introduction  
+
+## Learning outcomes
+
+By the end of this module a successful student should be able to:
+
+* Gain a comprehensive understanding of the methods used in preparing for and conducting patch clamp recordings in brain slices
+
+* Interpret and scrutinize data or output from software used to detect mEPSCs and measure their properties
+
+* Critically evaluate the application of the methods and their significance
+
+## Prelude  
 
 <font size = "3">  
 
-Welcome to the slice physiology session! In this session you'll see acute brain slices being prepared before getting hands-on with analysing data extracted from these acute brain slices using Eventer and Stimfit. Work through the below tabs in order and don't hesitate to ask questions at any point! 
+Welcome to the slice physiology workshop! In this workshop you will have virtual lab demonstrations of acute and organotypic brain slice preparation and whole-cell patch-clamp electrophysiology in brain slices. This will be followed by hands-on analysis of example data of miniature excitatoy synaptic currents using Eventer and Stimfit. Work through the below tabs in order and don't hesitate to ask questions with a tutor at any point! 
 
 Throughout this worksheet you'll notice several symbols, make sure to pay attention to these as these will help guide you through the session. The below table should hopefully explain what these mean.
 
 | Symbol | Meaning | What should i do when seeing this? |  
 |:-----------------|:--------------------|:--------------------|  
+| <font size="7">  `r emo::ji("open_book")` </font> | Reading | Information for you to read
+| <font size="7">  `r emo::ji("clapper")` </font> | Video | A video for you to watch
 | <font size="7">  `r emo::ji("thinking")` </font> | Question |  Please answer and be prepared to feed back to the tutors through the session |  
 | <font size="7">  `r emo::ji("exclamation")` </font> | Task | Best to follow these instructions ... |  
 | <font size="7">  `r emo::ji("angel")` </font>` | Tip | These little people are just here to help, they may make your life a bit easier! |  
 
 Please enjoy the session, and make the most of it by asking any questions you have - we're happy to help.  
 
-<font size="4">  
+## Background  
 
-| <font size="10">  `r emo::ji("thinking")` </font> QUESTIONS FOR ANDY |
-|:---------------------------|
-| What do you think about html alerts?       |  
-| |  
+<font size = "3">  
 
-</font>  
-
-
-Alerts like this ...   
-
-<div class="alert alert-danger"> <font size="10">  `r emo::ji("thinking")` </font> alert alert-danger </div>  
-<div class="alert alert-warning"> alert alert-warning </div>  
-<div class="alert alert-info"> alert alert-info </div>  
-
-... in which the text can also be formatted to the left ...  
-<div align="left">
-<div class="alert alert-danger"> **WARNING** This video contains scenes you may find upsetting **WARNING** </div>  
-</div>  
-... center ...  
-<center>
-<div class="alert alert-warning"> **TIP** Don't watch if you don't want to </div>  
-</center>  
-... and right of the page.  
-<div align="right">
-<div class="alert alert-info"> **INFO** Something else relevant </div>  
-</div>
-
-## 1. Slicing
-
-| <font size="10">  `r emo::ji("exclamation")` </font> TODO FOR ANDY |
-|:---------------------------|
-| Video of slice procedure inserted here      |  
-| Any introduction to this page | 
-| Update questions for this section | 
-| |   
-
-### Protocol 
-
-**1. Sucrose based cutting and storage solution**  
-
-| Reagent |	mM	| mw |	g/500 ml |  
-| :--- | :--- | :--- | :--- |  
-| NaCl | 75 | 8.44	| 2.19 |	   
-| Sucrose	| 75 |	342.3	| 12.83	|   
-| D-Glucose	| 10	| 180.16	| 0.90 | 	  
-| NaHCO$_{3}$	| 25	| 84.01	| 1.05 |  
-| KCl	| 2.5	| 74.55	| 0.09 |	  
-| NaH$_{2}$PO$_{4}$	| 1.25	| 119.98 |	0.07 | 	  
-| C$_{3}$H$_{3}$NaO$_{3}$ |	3	| 110.04	| 0.17 |   
-
-Add 250 $\mu$l 1M CaCl$_{2}$ to 500 ml to create final concentration of 0.5 mM  
-Add 3,500 $\mu$l 1M MgCl$_{2}$ to 500 ml to create final concentration of 7 mM  
-Adjust osmolarity to 305 $\pm$ 10 mOsm  
-Cool 200 ml to ~ ice temperature (~ 4$^o$C) and oxygenate with 95 % O$_{2}$ / 5 % CO$_{2}$   
-Warm 250 ml in slice storage chamber to 37 $^o$C $\pm$ 2$^o$C and oxygenate with 95 % O$_{2}$ / 5 % CO$_{2}$  
-
-**2. Prepare dissection room and vibratome**  
-Place dissection tools on ice (large and small scissors, scalpel, spatula, spoon and petri dishes)  
-Perform vibro-check on ceramic blade to minimise vertical vibrations  
-Adjust vibratome settings to the following: 
-
-  * Slice thickness = 250 $\mu$m
-  * Amplitude = 1 mm
-  * Approach speed = 0.09 mm/s$^-1$
-
-Cool slicing plate and chamber in freezer for 20-30 minutes.  
-
-**3. Culling and dissection**  
-Cull mice via cervical dislocation and confirm death via exsanguination  
-Remove skin from rostral to caudal with surgical scalpel  
-Make two small cuts at the base of the cranium before cutting the cranium from caudal to rostral in one delicate cut.   
-Remove the cranium with forceps. Two small cuts near the olfactory bulbs may help facilitate this process.  
-Remove hemisphere from the skull and place into ice cold physiological saline   
-The above process should take < ~ 1 minute and involve minimal damage to the brain.  
-Allow to cool for ~ 1 minute in the ice-cold sucrose, be careful to ensure the bubbles don’t agitate the brain    
-
-**4. Slicing**  
-Whilst cooling retrieve the slicing apparatus (plate and chamber) from the freezer and attach to the vibratome  
-Wipe the plate dry and apply cyanoacrylate glue  
-Place medial surface on sucrose soaked filter paper and remove the cerebellum  
-Hemi-sect the brain, then perform the ‘magic cut’, removing 10-20% of brain matter from the dorsal surface  
-Place onto the cyanoacrylate glued surface so the ‘magic cut’ surface comes into contact with the glue and the ventral surface is up  
-Apply a few drops of ice cold sucrose to the hemisphere now to prevent glue riding up  
-Place the stage into the vibratome and fill quickly with sucrose, ensuring the solution is still bubbling  
-Prepare slices from the brain with the blade at an approach angle of ~ 18%^o%  
-Transfer slices to the storage chamber upside-down if possible as the integrity of the superficial surface is better  
-From the last slice, start a timer for 30 minutes recovery time before maintenance at room temperature (ensure depth of recovery is shallow)  
-Good slices appear to have a peanut shaped hippocampus and clear striation in the CP  
-
-<center>
-![](images/magic.png){width=100%}  
-<br> **Figure 1** *'Magic' slice angle*
-</center>
-
-**Video Protocol**  
-![](https://www.youtube.com/watch?v=gaRo8SijUtg&t=34s)
-
-<center>
-**Figure 2** *Video of acute brain slicing*
-</center>  
-
-| <font size="7">  `r emo::ji("thinking")` </font> ACUTE SLICING QUESTIONS |
+| <font size="7">  `r emo::ji("open_book")` </font> WHY HAVE A WORKSHOP ON PATCH CLAMP IN BRAIN SLICES? |
 |:---------------------------|
 
-```{r questions}
+
+**Why study excitatory synaptic transmission?**
+The synapse is a site of contact between two neurons. Excitatory chemical synapses are essential for information flow through neuronal circuits and a major site for the processing and storage of memories in the brain. Therefore, it is not surprising that synapses serve as the site of action for many prescribed medications and their disruption contributes to many neurological and psychiatric disorders. These include epilepsy, stroke, schizophrenia, autism, depression, addiction, Parkinson's disease, Alzheimer's disease, and traumatic brain injury. Hence, a fundamental understanding of the function, and plasticity of synapses is essential to advancing our knowledge about brain function in health and disease.
+
+**Why brain slices?**
+In our experiments, we record from brain tissue *ex vivo* brain tissue, meaning outside of the living body. This is achieved by cutting slices of the brain and either recording from them the same day (acute slices) or placing them in an incubator to culture over a couple of weeks before recording (organotypic slices). Brain slices maintain many aspects of *in vivo* biology, including functional local synaptic circuitry with preserved architecture. However, brain slices enable good experimental access compared to *in vivo* as well as precise control of the extracellular environment, for example using drugs, to help identify or isolate the molecular components underling measurements. In addition, voltage clamp recordings are more feasible in brain slices since it is easier to obtain good quality patch clamp recordings when patching under visual guidance (using a microscope). With organotypic slices, transfection or viral transduction can be accomplished relatively easily *in vitro* to study the function of novel genes or genetic manipulations. They are also amenable to longitudinal studies (i.e. repeated measurements of the same variable over time) without ethical concerns.
+ 
+**Why patch clamp technique?**
+Currents elicited by unitary synaptic connections at CNS synapses are typically very small, so for precise and controlled detection of synaptic events one is best employing intracellular recording techniques. Application of patch-clamp techniques to brain slices has significantly advanced research on endogenous ion channels and the properties of synaptic transmission in central neurons. This recording technique has allowed direct observation of spontaneous and evoked synaptic currents as well as the gating of endogenous ion channels at single-channel resolution. It can also be used to dialyze neurons with compounds that can highlight the morphology of cells, thus extending the capabilities of patch clamp to assisting in anatomical studies. Together, these advances have contributed to our understanding of passive and active biophysical properties of excitable cells. A major advantage of this technique is that it provides information in real-time on how specific manipulations (e.g., pharmacological, experimenter-induced plasticity) may alter specific changes in neuronal or ion channel function.
+
+| <font size="7">  `r emo::ji("thinking")` </font> TOPICAL QUESTIONS |
+|:---------------------------|
+
+```{r background_questions}
 # Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("What is the benefit of the cutting solution being ice-cold?",
-    answer("Strengthen the cell membranes of the neurons"),
-    answer("Stop the brain overheating"),
-    answer("Slow the activity of enzymes acting to damage the slice", correct = TRUE),
-    answer("It looks ... cool ...")
+  question("Which of the following are advantages of recording from brain slices over recording in vivo?",
+    answer("They are more amenable to controlled pharmacological intervention",correct = TRUE),
+    answer("They don't involve the use of animals for experiments"),
+    answer("Whole-cell voltage-clamp experiments are more feasible",correct = TRUE),
+    answer("The measurements more accurately resemble activity of neurons in a living animal"),
+    correct = "Correct. Experiments on brain slices require the use of animals and removing brain tissue from the animal typically disturbs the on-going the activity of neuronal circuits.",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
   ),
-  question("What is the ideal mix of Na & Mg in the slicing media?",
-    answer("High Mg, High Na"),
-    answer("Low Mg, Low Na"),
-    answer("High Mg, Low Na", correct = TRUE),
-    answer("Low Mg, High Na")
-    #correct = "spot on, well done!",
-    #incorrect = "not quite!"
+  question("Which of the following would be good situations to use patch clamp recordings in brain slices?",
+    answer("To characterize conductances underlying neuronal signalling using voltage-clamp and pharmacological tools",correct = TRUE),
+    answer("To map out functional connectivity in local circuits",correct = TRUE),
+    answer("To characterize microscopic currents from single channels, which contribute to membrane conductances",correct = TRUE),
+    answer("To perform functional and anatomical characterization of neurones in a brain region.",correct = TRUE),
+    answer("To examine how membrane conductances respond to specific concentrations of agents delivered inside the cell.",correct = TRUE),
+    correct = "That's right! All of these are good examples of applications for patch clamp in brain slices",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
   )
 )
 ```
 
-## 2. Recording
+## 1. Brain Slices
 
-| <font size="10">  `r emo::ji("exclamation")` </font> TODO FOR ANDY |
-|:---------------------------|
-| Video of recording procedure inserted here      |  
-| Any introduction to this page | 
-| Update questions for this section | 
-| |   
+We can either record from freshly cut brain slices (called acute slices) or we can place slices of brain tissue in an incubator and culture them for up to a few weeks before recording - we call these organotypic or cultured slices. Please find in each of the following subtopics a video demonstration and a set of questions for you to answer.
 
-### Protocol
+## 1a. Acute slices
 
-**1. Artificial cerebrospinal fluid recording solution & intracellular solution prep**  
-
-| Reagent |	mM	| mw |	g/500 ml |  
-| :--- | :--- | :--- | :--- |  
-| NaCl | 125 | 8.44	| 3.65 |	   
-| D-Glucose	| 10	| 180.16	| 0.90 | 	  
-| NaHCO$_{3}$	| 25	| 84.01	| 1.05 |  
-| KCl	| 2.5	| 74.55	| 0.09 |	  
-| NaH$_{2}$PO$_{4}$	| 1.25	| 119.98 |	0.07 | 	  
-| C$_{3}$H$_{3}$NaO$_{3}$ |	1	| 110.04	| 0.06 |   
-
-Oxygenate with 95 % O$_{2}$ / 5 % CO$_{2}$  
-<br>
-Add 250 $\mu$l 1M CaCl$_{2}$ to 50 ml to create final concentration of 5 mM  
-Add 1 $\mu$l 1M MgCl$_{2}$ to 50 ml to create final concentration of 0.02 mM  
-Add 25 $\mu$l 1 mM TTX to 50 ml to create final concentration of 500 nM  
-Add 250 $\mu$l 5 mM PTX to 50 ml to create final concentration of 25 $\mu$M  
-Add 50 $\mu$l 10 mM CGP to 50 ml to create final concentration of 10 $\mu$M  
-<br>
-Adjust osmolarity to 305 $\pm$ 10 mOsm  before warming to 30$^o$C $\pm$ 2$^o$C  
-Allow intracellular solution to thaw on ice. Osmolarity should be 295 $\pm$ 10 mOsm  
-
-
-**2. Prepare rig**  
-Ensure amplifier, NiDaQ, SliceScope and inline heater are all switched on  
-Pull glass pipettes with a tip diamter between 1-3 M$\Omega$  
-Ensure solution perfusing through the bath evenly and the ground electrode is submerged  
-Submerge slice in bath solution and leave for 10 minutes for sucrose to wash off  
-
-**3. Patching**  
-Locate healthy cell (proud, defined edges, smooth surface)  
-Apply ~65 mbar pressure before entering solution and navigate the electrode towards the slice  
-Approach cell until dimple forms on surface of neuron  
-Quickly release pressure and allow resistance to increase until a G$\Omega$ seal is formed  
-Clamp the cell to -65 mV and compensate for fast and slow capacitance  
-Break the cell membrane by applying small amounts of negative pressure and apply the 'zap' button too  
-Ensure access resistance is below 20 M$\Omega$ (applying negative pressure if necessary) and resting current is stable  
-Allow the Cs based intracellular solution a couple of minutes to equilibriate with the internal solution within the neuron  
-Adjust gain, filter and sampling frequency as appropriate  
-*In these recordings (Gain = 100, Filter = 2 kHz low pass, Sampling = 20 kHz)*  
-Record! 
-
-
-**Video Protocol**  
-![](https://www.youtube.com/watch?v=gaRo8SijUtg&t=34s)
-
-<center>
-**Figure 3** *Video of whole cell patch clamp from brain slices*
-</center>  
-
-
-| <font size="7">  `r emo::ji("thinking")` </font> ACUTE SLICING QUESTIONS |
+| <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Preparing acute hippocampal slices (16 mins) |
 |:---------------------------|
 
-```{r questions-2}
+![](https://youtu.be/EPYVjMOPcTE)
+
+
+| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT ACUTE SLICES |
+|:---------------------------|
+
+```{r acute_slice_questions}
+# Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("What is the benefit of the cutting solution being ice-cold?",
-    answer("Strengthen the cell membranes of the neurons"),
-    answer("Stop the brain overheating"),
-    answer("Slow the activity of enzymes acting to damage the slice", correct = TRUE),
-    answer("It looks ... cool ...")
+  question("Which of the following represent benefits of the cutting solution being ice-cold?",
+    answer("It increases oxygen solubility in the solution", correct = TRUE),
+    answer("It stops the brain overheating"),
+    answer("It slow the activity of enzymes acting to damage the slice", correct = TRUE),
+    answer("It reduces the metabolism of the tissue and lowers the risk of hypoxia.", correct = TRUE),
+    answer("It reduces the metabolism of the tissue and lowers the risk of acidosis.", correct = TRUE),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
   ),
-  question("What is the ideal mix of Na & Mg in the slicing media?",
-    answer("High Mg, High Na"),
-    answer("Low Mg, Low Na"),
-    answer("High Mg, Low Na", correct = TRUE),
-    answer("Low Mg, High Na")
+  question("What is the ideal mix of Na and Mg in the sucrose-based cutting solution?",
+    answer("High Mg^2+^, High NaCl"),
+    answer("Low Mg^2+^, Low NaCl"),
+    answer("High Mg^2+^, Low NaCl", correct = TRUE),
+    answer("Low Mg^2+^, High NaCl"),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
   )
 )
-```   
+```
 
-## 3. Eventer
+## 1b. Organotypic slices  
 
-| <font size="10">  `r emo::ji("exclamation")` </font> TODO FOR ANDY |
+| <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Preparing organotypic hippocampal slices (27 mins) |
 |:---------------------------|
-| Check instructions here make sense      |  
-| Include questions for this section as per the previous two sections | 
-| |   
 
-<div align="justify">
-
-In the section we will be analysing some of the data we generated during the experiment seen previously. Synaptic events are particularly small, and can frustratingly look quite similar to the background noise. For this reason we use a software, built in house, called Eventer that dramatically improves the speed and reproducibility of this analysis. Feel free to refresh yourself with some of the protocol in the previous section to remind yourself what type of events these are and why. 
+![](https://youtu.be/GvUg0wiu_p8)
 
 
-### Preload settings  
-Choose your channel and split settings. Only some data formats allow for multiple recording channels, so unless you need to, the channel feature can be left at 1. Split should only be used if your data varies in length or if you want to split a continuous recording wave into smaller chunks for parallel processing.
+| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT ORGANOTYPIC SLICES |
+|:---------------------------|
+
+```{r organotypic_slice_questions}
+# Include correct and incorrect statements to aid students understanding as necessary. 
+quiz(
+  question("What is the pH buffering system most often used in cell culture?",
+    answer("10 mM HEPES"),
+    answer("10 mM Tris-Cl"),
+    answer("25 mM Na-HCO<sub>3</sub>"),
+    answer("25 mM Na-HCO<sub>3</sub> + 5% CO<sub>2</sub>", correct = TRUE),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
+  ),
+  question("What age rodents are slices typically prepared from?",
+    answer("P0"),
+    answer("P5-7", correct = TRUE),
+    answer("P21"),
+    answer(">P40"),
+    correct = "That's correct! The success rate for culturing slices from rodents older than about P10 tends to drop.",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
+  )
+)
+```
+
+## 2. Patch clamp recording
+
+Now we have prepared our slices it's time to actually record from them!
+
+
+| <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Patch clamp in brain slices (37 mins) |
+|:---------------------------|
+
+![](https://youtu.be/jETRgJp7DZY)
+
+
+| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT PATCH CLAMP |
+|:---------------------------|
+
+```{r patchclamp_questions}
+# Include correct and incorrect statements to aid students understanding as necessary. 
+quiz(
+  question("What is the coating on the wires used for recording and ground electrodes?",
+    answer("Silver"),
+    answer("Tungsten"),
+    answer("Platinum"),
+    answer("Silver chloride", correct = TRUE),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
+  ),
+  question("How will the current change when applying test voltage pulses for a the patch pipette in the bath -> cell-attached -> whole-cell configuration?",
+    answer("large, slow transient -> very small square pulse -> large square pulse"),
+    answer("large square pulse -> very small square pulse -> large, slow transient", correct = TRUE),
+    answer("very small square pulse -> large square pulse -> large, slow transient"),
+    answer("very small square pulse -> large, slow transient -> large square pulse"),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
+  )
+)
+``` 
+
+
+## 3. Detecting mEPSCs
+
+In the section we will be analysing some of the data like the ones we generated during the experiment seen in the previous topic. Synaptic events are particularly small, and some of them can be hard to distinguish from background noise. There is lots of software available to detect spontaneous synaptic currents. We use an open-source software designed to use time course information about the events of interest to help identify events occur, extract those parts of the recording and align the putative events. This software, developed by our lab at Sussex, is called Eventer (https://sourceforge.net/projects/eventer/) and it facilitates speedy and reproducible analysis of spontaneous synaptic currents. 
+
+| <font size="7">  `r emo::ji("clapper")` </font> Virtual lab training: Learning how to use Eventer |
+|:---------------------------|
+
+![](https://www.youtube.com/watch?v=gaRo8SijUtg&t=34s)
+
+
+
+| <font size="7">  `r emo::ji("exclamation")` </font> ANALYSIS OF mEPSCs USING EVENTER |
+|:---------------------------|
+
+
+### Start the software
+
+If the Eventer software is not already loaded, double click on the Eventer icon visible on the desktop. It looks like this:
+
+<left>
+![](images/Eventer_icon.png){width=10%}  
+</left>
+
+### Settings we need to check before loading the data
+
+Before selecting the data file we want to load, we need to set: 
+
+* which recording channel we want to load, and 
+* whether we want to split the recordings into smaller waves settings. 
+
+Only some data formats allow for multiple recording channels; the recordings you will analyse only have 1 channel so the `Channel` setting can be left at the default value of 1. Split can be used if you want to split a continuous recording wave into smaller waves for parallel processing or to synchronous artifacts (e.g. current transients resulting from test pulses). The recording you will analyse is 2 minutes long with test pulses delivered every 30 seconds. Therefore, the first thing to do is set the `Split` value to 30 seconds. This will separate the 2 minute recording into 4 waves that are 30 seconds long each.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.13.png){width=100%}  
   <br>
-**Figure 4** *Pre-load settings in Eventer*
+**Figure 1** *Pre-load settings in Eventer*
 </center>
 
-<br>
-<br>
-
-<font size="4">  
-
-| <font size="7">  `r emo::ji("angel")` </font> TIP |
-|:---------------------------|
-| **Need to change the split length?** <br> *To do so, the file must be closed, the split length changed, and then the file loaded again*  |  
-| |  
-
-
-</font>  
 
 ### Loading your data  
-Choose which data you wish to analyse. Multiple data sets can be analysed at once. Eventer will merge these data sets together so ensure you are loading data that you want merged. To load multiple data sets to be merged, simply repeat the loading process shown below.  
+
+Click the `Load` button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: `S:\ATiN\Tutorial\Eventer\`  
+Ask a tutor if you do not know which file to load.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.18.png){width=100%}    
   <br>
-**Figure 5** *Loading your data in Eventer*
+**Figure 2** *Loading your data in Eventer*
 </center>
 
-<br>
-<br>
-
-<font size="4">  
-
-| <font size="7">  `r emo::ji("exclamation")` </font> TASK|
-|:---------------------------|
-|**Please now load** `filepath\filename`|  
-| | 
-
-</font>
 
 ### Visualising your data
-Eventer includes a preview tab for immediate visualisation of your data upon loading. To inspect the data in more detail, the ‘Pop-up Graph’ should be used as shown here. This graph can then be zoomed and dragged to located individual events.
+
+Eventer includes a preview tab for immediate visualisation of your data upon loading. To preview each of the waves, click on the `Wave` dropdown menu and select a wave number. To inspect the data in more detail, the ‘Pop-up Graph’ should be used as shown here. This graph can then be zoomed and dragged to located individual events using the tools located in the toolbar.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.23.png){width=100%}  
   <br>
-**Figure 6** *Visualising your data in Eventer*
+**Figure 3** *Visualizing your data in Eventer*
 </center>
 
 <font size="4">  
 
 | <font size="7"> `r emo::ji("angel")` </font> TIP |
 |:---------------------------|
-| *The synaptic events you are seeing are all excitatory, so by convention downwards at this holding potential, however the test pulse is still visible and very large. At this point, it's advisable to exclude these from your recordings. This can be done individually for every pulse you see, or you can split recording so that the event you're looking to exclude is at the beginning of each 'wave' at the same time. This will make it very easy to exclude them all with one click!* |  
+| *Hover the mouse over features on the Eventer interface to get a short description or tooltip.* |  
 | |  
 
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Please now close your recording, changing the split interval to the duration of the test pulse interval, then reload the file <br> You should now see the test pulse at the beginning of each wave |  
-| |  
 
 </font>
 
 ### Excluding regions from your analysis
-It is possible that there are regions of your data that you want to be excluded from the analysis. For example, this could be a particularly noisy section of recording or the inclusion of a test pulse as shown here. To exclude these regions, open the exclude tab and regions to be excluded can either be manually typed in or selected using the highlighted button. Selecting this button will bring up cursors similar to the template selection window.
+
+It is possible that there are regions of your data that you want to be excluded from the analysis. For example, this could be a particularly noisy section of recording or the inclusion of a test pulse as shown here. The synaptic events we recorded are all excitatory, so by convention downwards at this holding potential, however the current transients resulting from the test pulse are still visible and very large. These should be apparent near the start of the wave - we will exclude these artifacts from the analysis. To exclude these regions, open the `Exclude` tab and either:  
+
+* manually type in the start and end time of the exclusion zone around the test pulse, or  
+* click the button decorated with a cursor pointer and click twice on the pop-up graph (Figure 7), before and after the artifact
+
+Since the artifact occurs at the same time in all waves, click the button `Apply to all waves`.
+
+Look through the four waves again - are there any any periods of the recording where the baseline is unstable or the recording noise transiently becomes larger, which you might want to exclude. (Note that you probably won't want to apply those additional exclusion zones at the same time in all the waves!)
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.40.png){width=100%}  
-**Figure 7** *Excluding regions from your analysis in Eventer*
+**Figure 4** *Excluding regions from your analysis in Eventer*
 </center>  
 
-<font size="4">  
 
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Exclude the test pulse from your current wave, and then apply this setting to all waves |  
-| |  
+### Filtering your data
 
-</font>
-
-### Prefiltering your data
-It is possible that excess noise is still present in your data that may not have been isolated during data acquisition. To help visualise data, Eventer enables the user to pre-filter their data through high- and low-pass filter cut offs. Shown here, a 1 kHz low-pass filter is applied to the data in the detection tab.
+It is possible that excess high frequency noise is still present in your data that may not have been isolated during data acquisition. Eventer enables the user to filter their data through high- and low-pass filter cut offs. In the figure below, a 1 kHz **low-pass** filter has been set. To apply a 1 kHz low pass filter to your data, click the `Detection` tab, tick the appropriate `On/Off` checkbox and type 1000 Hz into the field labeled `Low-pass Filter Cut-Off`.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.30.png){width=100%}  
-**Figure 8** *Pre-filtering your data in Eventer*
+**Figure 5** *Filtering your data in Eventer*
 </center>
 
-<font size="4">  
-
-| <font size="7">  `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Apply a 1 kHz low pass filter to your data |  
-| |  
-
-</font>
 
 ### Defining your event template
-In the template tab you can set a template event for the software to compare your data against. This can be set manually if the rise and decay parameters of your events are known, or can be done through opening the ‘Pop-up Graph’ as mentioned before and selecting the button highlighted here. This will allow the user to select two points; one before and one after the event of interest. The time constants will then be in the boxes below the highlighted button and should then be copied into boxes above before selecting the button ‘Apply to all waves’.
-It is worth locating an event in the ‘Pop-up Graph’ before defining the time constants and that the sign of your events is correctly stated in the detection panel.
+
+We now must define a model template EPSC waveform that Eventer will use to detect the spontaneous mEPSCs by deconvolution. The deconvolutioon method used is based on [Pernía-Andrade et al., 2012] (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471482/). The model event is defined by the sum of two exponentials using the following equation:
+
+$$f(t) = exp \left (\frac{-t}{\tau_{decay}} \right ) - exp\left (\frac{-t}{\tau_{rise}} \right )$$ 
+<font size="2">$$\textrm{Where}\ t \ \textrm{is time},\ \tau_{decay}\ \textrm{is the decay time constant and}\ \tau_{rise}\ \textrm{is the rise time constant.}$$</font>
+
+Select the `Template` tab next to load the interface for this task. Click on the `Pop-up Graph` button and zoom in on an exemplary mEPSC. Next, click the button decorated with the cursor pointer (highlighted in the figure below) and click on the pop-up graph at two positions; one just before the mEPSC and the other after the mEPSC has decayed. Eventer will try to fit a model mEPSC waveform to the selected data. The time constants will then be in the boxes below the highlighted button and should then be copied into boxes above before selecting the button `Apply to all waves`. Ensure the sign of your events is correctly assigned as `-`.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.35.png){width=100%}  
-**Figure 9** *Defining your event template in Eventer*
+**Figure 6** *Defining your event template in Eventer*
 </center>
-
-<font size="4">  
-
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Define your event template carefully, then apply the `Rise` and `Decay` fit paremeters of your template to all waves |  
-| |  
-
-</font>
-
-
-### Parallel Processing
-If you wish to use parallel processing which will speed up analysis on newer computers, you can choose the number of workers. The limit of how many workers you can have is dependent on how many cores and threads your CPU has. After the worker number has been chosen, check the parallel box and wait for the workers to initialize.
-
-<center>
-![](images/Screenshot 2020-08-18 at 16.09.45.png){width=100%}  
-**Figure 10** *Enabling parrellel processing in Eventer*
-</center>
-
-<font size="4">  
-
-| <font size="7"> `r emo::ji("angel")` </font> TIP|
-|:---------------------------|
-| Don't worry too much about this for your recordings as they're not too long! |  
-| |  
-
-</font>
 
 ### Running your analysis
-Once the user is happy with the settings for their analysis, open the output tab and ensure the data will be outputted into the desired output format and saved to the appropriate location. By default this will create a folder named ‘eventer.output’ in the current working directory that the data was located. Choose which waves you would like stored in the analysis by either going through each wave individually and selecting/deselecting the store checkbox, or click the store all waves button. Unless a new output folder is specified for new analysis on the same dataset, it will be overwritten when performing new analysis.
-Changing the box on the right from ‘Current’ to ‘Batch’ will tell Eventer that the analysis can be performed on the batch of waves stored, rather than solely on the current wave. If the user has not loaded multiple files or split the recording then ‘Current’ and ‘Batch’ will both be the same. Having confirmed these settings the user can hit ‘Run’ and the light will turn green indicating analysis is in progress.
+
+We now need to ensure the that output of the analysis will be what and where we want it to be. Click the `Output` tab to show the range of options available then click the `Output folder` button **and name it with your surname**.  
+
+Next, click the `Wave Format` drop-down menu and select `HDF5 (Stimfit) binary (.h5)` - this is because we will analyse further the detected and aligned mEPSCs using another software  (Stimfit) in the next topic.   
+
+Next, click the `Store all waves` button to ensure that the analysis is applied to all 4 waves. 
+
+Next, click the drop-down menu (highlighted in the figure below) and change it from `Current` to `Batch` - this will tell Eventer to analyse all stored waves.  
+
+Having confirmed all these settings the user can hit ‘Run’ and the light will turn green indicating analysis is in progress.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.50.png){width=100%}  
-**Figure 11** *Running your analysis in Eventer*
+**Figure 8** *Running your analysis in Eventer*
 </center>
-
-
-<font size="4">  
-
-| <font size="7"> `r emo::ji("thinking")` </font> QUESTION |
-|:---------------------------|
-| Should you be in **Batch** or **Current** mode? |  
-| |  
-
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Define your output folder as the name of your group and then run your analysis! |  
-| |  
-
-</font>
 
 
 ### Accessing your results
-After running the analysis, Eventer will open multiple figures. A quick summary of results is also available in the summary tab as shown here. The rest of your results will be saved in the root directory in the previously specified output folder.
+
+After running the analysis, Eventer will open multiple figures. A quick summary of results is also available in the summary tab as shown here. Your results will be saved in the output folder that you specified with your surname.
+
+`S:\ATiN\Tutorial\Eventer\<your_surname>` 
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.55.png){width=100%}  
-**Figure 12** *Accessing your results in Eventer*
+**Figure 9** *Summary of your results from Eventer*
 </center>
 
 ### Training a machine learning model
-Eventer also includes an option to enable users train a machine learning model against an exemplary set of data. To do this, open the detection tab and change the event criterion to ‘Machine Learning’ before ticking the ‘Training Mode’ tickbox. Running the analysis now will open up a window that will ask users to classify events as either events or not. A pop-up window will allow the user to also name their model. Move through the events selecting or deselecting events where appropriate until all events are classified then click complete.
-When selecting whether an event is indeed actually an event, it is important that the green line shown above is exactly at the start of where you perceive the event to be otherwise the model may become inaccurate.
+
+Eventer also includes an option to enable users train a machine learning model against an exemplary set of data. To do this, click the `Detection` tab, then set the `Event Criterion` drop-down menu to `Machine Learning` before ticking the `Training Mode` tick box. Running the analysis now will open up a window that will ask users to classify event detection as true or false. A pop-up window will appear asking for you to name your model - leave this as your surname. Click the `Store` button again, followed by the `Run` button. 
+
+After the analysis has completed, a pop-up window titled 'Classify events' will appear. In this window, click the `Start` button and then the `Select all` button. To scroll up or down through the detected events, press the `K` or `M` keys respectively on your keyboard. 
+
+Use you judgment to make a call on whether you think the mEPSC (starting at the time of the vertical <font color="green">green</font> line) should be considered a real event. If you think Eventer falsely detected an event, press the `R` key to deselect it. When you have visually inspected and classified all of the candidate mEPSCs, click the `Complete` button to close the `Classify events` window and train a machine learning model using the Random Forests algorithm. This algorithm builds decision trees using various predefined features of the data to best satisfy your classification. Upon completing the classification and starting the training, you will be presented with a plot showing the out-of-bag classification error which can briefly be described as a measure of the prediction error using bootstrap aggregating (bagging) to subsample data samples used for training. The prediction error should then stabilize well before reaching 128 trees (which is the default number of trees used by the implementation of Random Forests in Eventer).
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.10.00.png){width=850}   
-**Figure 13** *Training a machine learning model in Eventer*
+**Figure 10** *Training a machine learning model in Eventer*
 </center>
 
 
-<font size="4">  
+### Using a machine learning model
+The real beauty of machine learning is that trained models can be used to apply your criteria of selection or classification to a set of new data. Lets give this a go using a model prepared in our lab using a different (but comparable) recording. 
 
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Classify events as either true events or false positives |  
-| |  
+Click on the `Detection` tab - you will notice that the `Training mode` checkbox is already unchecked and the machine learning model (.mlm) file listed is the one you just created. that will  and select load model in the detection tab. The trained model will be stored in the eventer output folder as a .mlm file as shown here. This model is now available for use on a new dataset, distinct from the set it was trained on. 
 
-</font>  
+Click the `Load model` button, navigate to `S:\ATiN\Tutorial\Eventer\model` in the file dialog and load the file named `model.mlm`.
 
-### Using your model
-To then use the trained model on subsequent analysis, the user can then deselect the training mode and select load model in the detection tab. The trained model will be stored in the eventer output folder as a .mlm file as shown here. This model is now available for use on a new dataset, distinct from the set it was trained on. Upon completing your analysis with your machine learning model, you will be presenting with a plot showing the out-of-bag classification error which can briefly be described as a measure of the prediction error using bootstrap aggregating (bagging) to subsample data samples used for training. The prediction error should then stabilize well before reaching 128 trees (which is the default number of trees used by the implementation of Random Forests in Eventer).
+To ensure we save the output of this analysis to a different place, click the `Output` tab to show the range of options available then click the `Output folder` button **and name it with your surname followed by \_mlm **. 
+
+Finally, click the `Store` button followed by the `Run` button.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.10.05.png){width=100%}   
-**Figure 14** *Using your machine learning model in Eventer*
+**Figure 11** *Using a machine learning model in Eventer*
+</center>
+
+<br>
+
+## 4. Measuring EPSC properties
+
+We have detected mEPSCs and we have some basic summary data about them from Eventer. Lets now get some detailed data about the amplitude and kinetics of individual events. We will achieve this using the open source software package called Stimfit.
+
+### Start the software
+
+If the Stimfit software is not already loaded, double click on the Stimfit 0.13 icon visible on the desktop. It looks like this:
+
+<left>
+![](images/Stimfit_icon.png){width=10%}  
+</left>
+
+### Become familiar with the Stimfit user interface
+
+Visit the following webpage to familiarise yourself with the Stimfit interface:
+https://neurodroid.github.io/stimfit/manual/getting_started.html
+
+### Load the a file of the aligned and exported mEPSCs detected by Eventer
+
+Click on the `File` menu and click `Open...`
+
+<center>
+![](images/Stimfit_file_open.png){width=100%}  
+<br>
+**Figure 12** *Open the Stimfit file open dialog*
+</center>
+<br>
+Then navigate to `S:\ATiN\Tutorial\Eventer\<your_surname>_mlm\eventer.output\All_events` and open the file called `event_data.h5` 
+
+<br>
+
+<center>
+![](images/Stimfit_select_file.png){width=100%}  
+<br>
+**Figure 13** *Select the data file for analysis*
+</center>
+<br>
+
+When the file has loaded, you will see the first detected mEPSC and you can scroll through the mEPSCs (1 mEPSC per wave, or trace as Stimfit refers to them) by pressing the `right` and `left` cursor keys on your keyboard.
+
+<center>
+![](images/Stimfit_file_loaded.png){width=100%}  
+<br>
+**Figure 14** *Stimfit with the data loaded*
+</center>
+
+### Configure cursor settings
+
+The mEPSCs are downward deflections of the current, so before we ask Stimfit to make measurements on the mEPSCs, we need to tell Stimfit that we expect peaks to be negative.   
+
+First, go to the `Edit` menu and click `Cursor settings...`.
+
+<center>
+![](images/Stimfit_cursor1.png){width=100%}  
+<br>
+**Figure 15** *Loading the cursor settings window*
+</center>
+<br>
+The cursor settings window will then load. Under the `Peak` tab and `Peak direction` section, click the `Down` radio button.  
+
+<center>
+![](images/Stimfit_cursor2.png){width=50%}  
+<br>
+**Figure 16** *Set the direction of mEPSC peak measurements*
+</center>
+<br>
+
+### Calculate ensemble mean mEPSC
+
+Lets now calculate an ensemble mean mEPSC to help us decide on where to position the cursors used for making measurements. Press `Ctrl + A` key combination to select all of the mEPSCs and then the highlighted button to average the selected traces. This will pop up a new window which you should close by clicking `Close` in the `File` menu. You will then see the ensemble mean mEPSC in <font color="blue">blue</font> overlaid onto one of the currently selected mEPSC.  
+
+<center>
+![](images/Stimfit_average.png){width=100%}  
+<br>
+**Figure 17** *Calculating the ensemble mean mEPSC*
 </center>
 
 
-<font size="4">  
+### Set peak cursors
 
-| <font size="7"> `r emo::ji("exclamation")` </font> TASK |
-|:---------------------------|
-| Please now load the model named `model`, stored at `filepath\model` and run your analysis using this model |  
-| |  
+The mEPSCs are downward deflections of the current, so before we ask Stimfit to make measurements on the mEPSCs, we need to tell Stimfit that we expect peaks to be negative. Press the `P` key, then click the left mouse button where you want the peak calculation to start and click the right mouse button where you want the peak calculation to end. The start and end of the peak search region is illustrated by <font color="red">red</font> vertical dashed lines. Use the ensemble mean mEPSC as a guide for where you position these cursors.  
 
-</font>  
+<center>
+![](images/Stimfit_peak.png){width=100%}  
+<br>
+**Figure 18** *Set the <font color="red">red</font> peak cursors*
+</center>
+<br>
+
+### Set the baseline cursors
+
+The holding current is seldom exactly zero so we need to subtract the constant offset represented by the baseline preceding the mEPSC. Press the `B` key, then click the left mouse button where you want the baseline calculation to start and click the right mouse button where you want the baseline calculation to end. The start and end of the baseline region is illustrated by <font color="green">green</font> vertical dashed lines. for each mEPSC, the offset will be calculated as the mean of the sample points between these two time points. Use the ensemble mean mEPSC as a guide for where you position these cursors.  
+
+<center>
+![](images/Stimfit_baseline.png){width=100%}  
+<br>
+**Figure 19** *Set the <font color="green">green</font> baseline cursors*
+</center>
+<br>
+
+### Visualising measurements
+
+If you now scroll through the mEPSCs using your `left` and `right` cursor keys, you will notice that there are additional annotations, like in the figure below. See figures 10-13 and the associated text on the following web page to understand what these represent: https://neurodroid.github.io/stimfit/manual/getting_started.html
+
+<center>
+![](images/Stimfit_measure.png){width=50%}  
+<br>
+**Figure 20** *Measurement annotations*
+</center>
+<br>
+Do the annotations make sense? If not, consider going back and resetting your peak and baseline cursors.
+
+### Batch analysis of mEPSC propeties
+
+Now click on `Batch analysis...` under the `Analysis` menu to load a pop-up with a list of options.
+
+<center>
+![](images/Stimfit_batch1.png){width=100%}  
+<br>
+**Figure 21** *Loading the batch analysis options*
+</center>
+<br>
+
+Check the boxes only for `Peak (from base)`, `Lo-Hi% risetime` and `Half amplitude duration` then press `OK`.
+
+<center>
+![](images/Stimfit_batch2.png){width=50%}  
+<br>
+**Figure 22** *Selecting batch analysis options*
+</center>
+<br>
 
 
-</div>
+A table of results will appear on the left hand side listing the amplitude, 20-80% rise time and full-width half-maximum for each event. Copy and past this data into a spreadsheet and save it in a file named with your surname in the following location:
+`S:\ATiN\Tutorial\Eventer\student_mEPSCs\`
 
-## 4. Stimfit
+<center>
+![](images/Stimfit_batch_results.png){width=50%}  
+<br>
+**Figure 23** *Table of results*
+</center>
+<br>
 
-| <font size="10">  `r emo::ji("exclamation")` </font> TODO FOR ANDY |
-|:---------------------------|
-| Format properly for markdown, i made a start so it was readable      |  
-| Any introduction to this page | 
-| Include questions for this page | 
-| Update instructions so relevent for this session  |     
-| |  
+## Report
 
-Advanced Techniques in Neuroscience
-Separation and analysis of AMPA and NMDA receptor-mediated synaptic conductances 
-Visit the following webpage to familiarise yourself with Stimfit before starting:
-https://neurodroid.github.io/stimfit/manual/getting_started.html
+As part of your assessment you may choose to write a lab report based on this workshop. The report should be no longer than 3000 words. If you write a report for this workshop, I suggest the following structure:  
 
-1.	Load the python electrophysiology software, Stimfit
-2.	Import our lab python module by typing in the Python shell:
-import penn
-3.	Data was previously acquired by recording 10 evoked EPSCs at 6 different holding potentials (-100, -80, -60, -40, -20, 0 and +20 mV). Using the EPSCs acquired at -100 mV we will first demonstrate how to obtain an average EPSC. Load the raw data file by typing in the command shell:
-penn.analysis.loadacq4()
-Using the explorer in the file open dialog, navigate to:
-Z:\techniques_in_neuro\C436R-2a\pair_001\dual_mixed_eEPSC_000\000
-Select the raw data file Clamp2.ma and click open.
-4.	The first trace is shown. Check the ‘Show selected’ box, press Ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. This will reveal, select and show an overlay of the 10 EPSCs.
-5.	Click the ‘Average’ button to average the EPSCs. 
- 
-6.	Close all the files by typing into the Python shell:
-close_all()
-7.	We have done the averaging procedure for recordings at all of the holding potentials and saved the average EPSCs for you. We will now load all the average EPSCs for a cell recorded at the different holding potentials,
-convert the current recordings to conductance and separate the AMPA and NMDA conductances. Type into the Python shell:
-penn.analysis.combiRec(0.01) 
-Using the explorer in the file open dialog, navigate to:
-Z:\ techniques_in_neuro\C436R-2a\pair_001\dual_mixed_eEPSC_000
-Select the file ‘2’ and click open.
-8.	Click the ‘Restore’ button
- 
-9.	Find the window with the recording of the ‘Mixed AMPA/NMDA-mediated conductance’ by selecting the window and typing in the command shell:
-get_recording_comment()
-Tip: To save you from repeatedly typing the same command, mouse click at the command prompt in the Python Shell and press Ctrl + up arrow to bring up the previous command etc.
-10.	The EPSC shown is the average EPSC at -100 mV. Select this AMPA-EPSC by clicking the green tick button.
- 
-11.	 As before, now find the window with the recording of the 'NMDA-mediated conductance'
-12.	Uncheck the Zero-base index box and select the last recording trace (7, average NMDA-EPSC at +20 mV) and select it by clicking the green tick button. 
-        
-13.	Now click Edit -> New window with… -> selected traces from all files
-14.	Check the ‘Show selected’ box, press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes.
-15.	The leak conductance is the constant offset and this was different at -100 mV and +20 mV so we need to subtract the baseline. To do this, press B and then left mouse click, hold and drag then release to select a period of baseline. Two vertical dashed green lines should appear to indicate the start and end times of the selected baseline period. Press the Return key to update measurements. (See figure below)
- 
-16.	Now click Extensions -> subtract_base, check the ‘Show selected’ box then press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. In what ways do the kinetics of the EPSCs appear to differ?
-17.	Now let us measure the peak amplitudes of the AMPA and NMDA conductances. Press P and then left mouse click, hold and drag then release to select a period of flanking the peak in both traces. Two vertical dashed red lines should appear to indicate the start and end times of the selected peak measurement period. Press the Return key to update measurements. Visually inspect the result to confirm that the horizontal dashed red line is level with the peak of the EPSC in the active trace (black). (See figure below)
-          
-18.	Select each trace noting down the following three measurements. Peak (from base), RT (Lo-Hi%) and T50. These correspond to the peak amplitude, the 20-80% rise time and the full-width half-maximum of the EPSC.
-19.	The amplitude and kinetics are clearly different for AMPA and NMDA conductances. Let us look specifically at the kinetics by scaling the AMPA-EPSC to match the peak amplitude of the NMDA-EPSC. To do this click Extensions -> peakscale, check the ‘Show selected’ box then press ctrl + A, then right arrow to select the next trace and finally the F key to rescale the axes. (See figure below)
- 
-20.	Let us now quantify the decay rate of the different conductances. Select trace 1 (the AMPA-EPSC), uncheck the ‘Show 2 selected’ box, press D and then left mouse click, hold and drag then release to select the region soon after the peak of the EPSC until the EPSC has decayed. Two vertical dashed grey lines should appear to indicate the start and end times of the selected period for curve fitting. (See figure below)
- 
-21.	To carry out the fit, click Extensions -> biexpfit. Copy and paste the ‘Analysis results’ into notepad or an Excel spreadsheet. 
-22.	Let us examine the fit and confirm we are satisfied with it. Check the ‘Show selected’ box, press ctrl + A then right arrow repeatedly to scroll through the fit traces. Confirm that we have a measurement in the table for ‘Weighted tau’. If not then ask your demonstrator. 
-23.	Click the ‘Close’ window button (next to the ‘Restore’ button). Repeat steps 20-22 for the NMDA-EPSC (trace 2)
-24.	Repeat steps 7-23 for two more cell recordings:
-Z:\ techniques_in_neuro\C436R-2a\pair_002\dual_mixed_eEPSC_000\2
-Z:\ techniques_in_neuro\C436R-2a\pair_003\dual_mixed_eEPSC_000\2
-25.	Collect the data into a spreadsheet and present bar graphs for the:
-1)	Ratio of peak AMPA/NMDA conductances 
-2)	20-80% rise times of the conductances
-3)	Weighted tau (time constant) of AMPA- and NMDA-EPSC decay 
-Compare the properties above between AMPA- and NMDA-EPSCs using statistical tests.
-How are the EPSC components differ? How are the unique properties important for the role AMPA and NMDA receptors play in synaptic transmission?
+* Title
+
+* Abstract
+
+* Introduction: Introduce patch clamp in brain slices and methods for detecting and analysing spontaneous synaptic currents.
+
+* Methods: Choose to describe the methods for preparing and recording from either acute **OR** organotypic hypocampal slices. Summarise the approach used to detect mEPSCs from recordings and analyse mEPSC properties.
+
+* Results: Using the data collected from your efforts in the class and provided to you by your tutor, present and interpret mEPSC detection results obtained by: 1) manual event screening (different users), and 2) by to using a single, trained machine learning model. 
+
+* Discussion: Critically discuss your results and the application of the various techniques.
+
+* References
+
+
 

@@ -24,11 +24,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning outcomes
 
-By the end of this module a successful student should be able to:
+By the end of this workshop a successful student should be able to:
 
 * Gain a comprehensive understanding of the methods used in preparing for and conducting patch clamp recordings in brain slices
 
-* Interpret and scrutinize data or output from software used to detect mEPSCs and measure their properties
+* Interpret and scrutinize data or output from software used to detect mEPSCs and measure mEPSC properties
 
 * Critically evaluate the application of the methods and their significance
 
@@ -36,7 +36,11 @@ By the end of this module a successful student should be able to:
 
 <font size = "3">  
 
-Welcome to the slice physiology workshop! In this workshop you will have virtual lab demonstrations of acute and organotypic brain slice preparation and whole-cell patch-clamp electrophysiology in brain slices. This will be followed by hands-on analysis of example data of miniature excitatoy synaptic currents using Eventer and Stimfit. Work through the below tabs in order and don't hesitate to ask questions with a tutor at any point! 
+Welcome to the slice physiology workshop! In this workshop you will have virtual lab demonstrations of acute and organotypic brain slice preparation and whole-cell patch-clamp electrophysiology in brain slices. This will be followed by hands-on analysis of example data of miniature excitatoy synaptic currents using open source softwar packages, Eventer and Stimfit. Work through the below tabs in order and don't hesitate to ask questions with a tutor at any point! 
+
+You can ask us in the class or using the padlet below. Note that your posts are anonymous and your tutors receive alerts when you post questions.
+
+https://uofsussex.padlet.org/acpenn/cuv8zste0em2xyur
 
 Throughout this worksheet you'll notice several symbols, make sure to pay attention to these as these will help guide you through the session. The below table should hopefully explain what these mean.
 
@@ -99,7 +103,7 @@ quiz(
 
 ## 1. Brain Slices
 
-We can either record from freshly cut brain slices (called acute slices) or we can place slices of brain tissue in an incubator and culture them for up to a few weeks before recording - we call these organotypic or cultured slices. Please find in each of the following subtopics a video demonstration and a set of questions for you to answer.
+We can either record from freshly cut brain slices (called acute slices) or we can place slices of brain tissue in an incubator and culture them for up to a few weeks before recording - we call these organotypic or cultured slices. Please find in each of the following subtopics a video demonstration and a set of questions for you to answer (these are not assessed).
 
 ## 1a. Acute slices
 
@@ -127,10 +131,10 @@ quiz(
     allow_retry = TRUE
   ),
   question("What is the ideal mix of Na and Mg in the sucrose-based cutting solution?",
-    answer("High Mg^2+^, High NaCl"),
-    answer("Low Mg^2+^, Low NaCl"),
-    answer("High Mg^2+^, Low NaCl", correct = TRUE),
-    answer("Low Mg^2+^, High NaCl"),
+    answer("High Mg^2+^, High Ca^2+^, High NaCl"),
+    answer("Low Mg^2+^, Low Ca^2+^, Low NaCl"),
+    answer("High Mg^2+^, High Ca^2+^, Low NaCl", correct = TRUE),
+    answer("Low Mg^2+^, Low Ca^2+^, High NaCl"),
     correct = "That's correct!",
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
@@ -212,6 +216,26 @@ quiz(
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
     allow_retry = TRUE
+  ),
+  question("Which drug would one add to the aCSF to ensure that spontaneous synaptic currents reflected miniature synaptic transmission (i.e. quantal transmission: the release of a single vesicle of neurotransmitter)?",
+    answer("Botulinum toxin"),
+    answer("Tetanus toxin"),
+    answer("Tetradotoxin", correct = TRUE),
+    answer("Picrotoxin"),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
+  ),
+  question("Which drug would one add to the aCSF to ensure that spontaneous synaptic currents reflected excitatory rather than inhibitory synaptic currents?",
+    answer("APV"),
+    answer("CNQX"),
+    answer("Tetradotoxin"),
+    answer("Picrotoxin", correct = TRUE),
+    correct = "That's correct!",
+    try_again = "Not quite, try again.",
+    try_again_button = "Try again",
+    allow_retry = TRUE
   )
 )
 ``` 
@@ -219,7 +243,7 @@ quiz(
 
 ## 3. Detecting mEPSCs
 
-In the section we will be analysing some of the data like the ones we generated during the experiment seen in the previous topic. Synaptic events are particularly small, and some of them can be hard to distinguish from background noise. There is lots of software available to detect spontaneous synaptic currents. We use an open-source software designed to use time course information about the events of interest to help identify events occur, extract those parts of the recording and align the putative events. This software, developed by our lab at Sussex, is called Eventer (https://sourceforge.net/projects/eventer/) and it facilitates speedy and reproducible analysis of spontaneous synaptic currents. 
+In the section we will be analysing some of the data like the ones we generated during the experiment seen in the previous topic. Synaptic events are particularly small, and some of them can be hard to distinguish from background noise. There is lots of software available to detect spontaneous synaptic currents. We use an open-source software designed to use time course information about the events of interest to help identify events occur, extract those parts of the recording and align the putative events. This software, developed by our lab at Sussex, is called [Eventer](https://eventerneuro.netlify.app/) (https://eventerneuro.netlify.app/) and it facilitates speedy and reproducible analysis of spontaneous synaptic currents. 
 
 | <font size="7">  `r emo::ji("clapper")` </font> Virtual lab training: Learning how to use Eventer (20 min)|
 |:---------------------------|
@@ -248,7 +272,10 @@ Before selecting the data file we want to load, we need to set:
 * which recording channel we want to load, and 
 * whether we want to split the recordings into smaller waves settings. 
 
-Only some data formats allow for multiple recording channels; the recordings you will analyse only have 1 channel so the `Channel` setting can be left at the default value of 1. Split can be used if you want to split a continuous recording wave into smaller waves for parallel processing or to synchronous artifacts (e.g. current transients resulting from test pulses). The recording you will analyse is 2 minutes long with test pulses delivered every 30 seconds. Therefore, the first thing to do is set the `Split` value to 30 seconds. This will separate the 2 minute recording into 4 waves that are 30 seconds long each.
+Only some data formats allow for multiple recording channels; the recordings you will analyse only have 1 channel so the `Channel` setting can be left at the default value of 1. Split can be used if you want to split a continuous recording wave into smaller waves for parallel processing or to synchronous artifacts (e.g. current transients resulting from test pulses). The recording you will analyse is 1.5 minutes long with test pulses delivered every 30 seconds. Therefore, the first thing to do is set the `Split` value to 10 seconds. This will separate the 1.5 minute recording into 3 waves that are 10 seconds long each.
+
+Eventer has a lot of settings built in to help improve consistency between analysis of different datasets. One such feature is the `Presets` feature that enables users to load all the settings used in another analysis. To help in your analysis today, and make it easier to compare between each of your datasets that you will generate, please now click the `Presets` button and navigate to, and load, the `presets.m` file in `S:\ATiN\Tutorial\Eventer\` and then click `Apply Presets`. It is important to still follow the below instructions to make sure your time constants and exclusion zones are appropriate for the recordings you are analysing.
+
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.13.png){width=100%}  
@@ -259,7 +286,7 @@ Only some data formats allow for multiple recording channels; the recordings you
 
 ### Loading your data  
 
-Click the `Load` button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: `S:\ATiN\Tutorial\Eventer\`  
+Click the `Load` button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: `S:\ATiN\Tutorial\Eventer\[Room Number]`  
 Ask a tutor if you do not know which file to load.
 
 <center>
@@ -294,7 +321,7 @@ Eventer includes a preview tab for immediate visualisation of your data upon loa
 It is possible that there are regions of your data that you want to be excluded from the analysis. For example, this could be a particularly noisy section of recording or the inclusion of a test pulse as shown here. The synaptic events we recorded are all excitatory, so by convention downwards at this holding potential, however the current transients resulting from the test pulse are still visible and very large. These should be apparent near the start of the wave - we will exclude these artifacts from the analysis. To exclude these regions, open the `Exclude` tab and either:  
 
 * manually type in the start and end time of the exclusion zone around the test pulse, or  
-* click the button decorated with a cursor pointer and click twice on the pop-up graph (Figure 7), before and after the artifact
+* click the button decorated with a cursor pointer and click twice on the pop-up graph (Figure 4), before and after the artifact
 
 Since the artifact occurs at the same time in all waves, click the button `Apply to all waves`.
 
@@ -344,9 +371,8 @@ Having confirmed all these settings the user can hit ‘Run’ and the light wil
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.50.png){width=100%}  
-**Figure 8** *Running your analysis in Eventer*
+**Figure 7** *Running your analysis in Eventer*
 </center>
-
 
 ### Accessing your results
 
@@ -356,8 +382,15 @@ After running the analysis, Eventer will open multiple figures. A quick summary 
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.55.png){width=100%}  
-**Figure 9** *Summary of your results from Eventer*
+**Figure 8** *Summary of your results from Eventer*
 </center>
+
+
+| <font size="7">  `r emo::ji("angel")` </font> Iterate your analysis to improve your fit|
+|:---------------------------|
+
+
+It is worth checking initially the bottom left hand image (Figure 4 on the eventer output) to see how well your template fits the actual events being detected. If the template doesn't match perfectly the ensemble average mEPSC, the time constants may need a little adjusting. Similar to when you defined your event template the first time, the event time constants obtained from that analysis will be shown in the 'Summary' tab and then also on the 'Template' tab. The time constants will be in the boxes below the highlighted button (on the Template tab) and should then be copied into the boxes above before selecting the button `Apply to all waves`. Re run your analysis here and see if the event template fits better. 
 
 ### Training a machine learning model
 
@@ -368,8 +401,8 @@ After the analysis has completed, a pop-up window titled 'Classify events' will 
 Use you judgment to make a call on whether you think the mEPSC (starting at the time of the vertical <font color="green">green</font> line) should be considered a real event. If you think Eventer falsely detected an event, press the `R` key to deselect it. When you have visually inspected and classified all of the candidate mEPSCs, click the `Complete` button to close the `Classify events` window and train a machine learning model using the Random Forests algorithm. This algorithm builds decision trees using various predefined features of the data to best satisfy your classification. Upon completing the classification and starting the training, you will be presented with a plot showing the out-of-bag classification error which can briefly be described as a measure of the prediction error using bootstrap aggregating (bagging) to subsample data samples used for training. The prediction error should then stabilize well before reaching 128 trees (which is the default number of trees used by the implementation of Random Forests in Eventer).
 
 <center>
-![](images/Screenshot 2020-08-18 at 16.10.00.png){width=850}   
-**Figure 10** *Training a machine learning model in Eventer*
+![](images/Screenshot 2020-08-18 at 16.10.00.png){width=100%}   
+**Figure 9** *Training a machine learning model in Eventer*
 </center>
 
 
@@ -386,14 +419,14 @@ Finally, click the `Store` button followed by the `Run` button.
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.10.05.png){width=100%}   
-**Figure 11** *Using a machine learning model in Eventer*
+**Figure 10** *Using a machine learning model in Eventer*
 </center>
 
 <br>
 
 ## 4. Measuring EPSC properties
 
-We have detected mEPSCs and we have some basic summary data about them from Eventer. Lets now get some detailed data about the amplitude and kinetics of individual events. We will achieve this using the open source software package called Stimfit.
+We have detected mEPSCs and we have some basic summary data about them from Eventer. Lets now get some detailed data about the amplitude and kinetics of individual events. We will achieve this using the open source python-based software package called [Stimfit] (https://github.com/neurodroid/stimfit) (https://github.com/neurodroid/stimfit).
 
 ### Start the software
 
@@ -415,7 +448,7 @@ Click on the `File` menu and click `Open...`
 <center>
 ![](images/Stimfit_file_open.png){width=100%}  
 <br>
-**Figure 12** *Open the Stimfit file open dialog*
+**Figure 11** *Open the Stimfit file open dialog*
 </center>
 <br>
 Then navigate to `S:\ATiN\Tutorial\Eventer\<your_surname>_mlm\eventer.output\All_events` and open the file called `event_data.h5` 
@@ -425,7 +458,7 @@ Then navigate to `S:\ATiN\Tutorial\Eventer\<your_surname>_mlm\eventer.output\All
 <center>
 ![](images/Stimfit_select_file.png){width=100%}  
 <br>
-**Figure 13** *Select the data file for analysis*
+**Figure 12** *Select the data file for analysis*
 </center>
 <br>
 
@@ -434,7 +467,7 @@ When the file has loaded, you will see the first detected mEPSC and you can scro
 <center>
 ![](images/Stimfit_file_loaded.png){width=100%}  
 <br>
-**Figure 14** *Stimfit with the data loaded*
+**Figure 13** *Stimfit with the data loaded*
 </center>
 
 ### Configure cursor settings
@@ -446,7 +479,7 @@ First, go to the `Edit` menu and click `Cursor settings...`.
 <center>
 ![](images/Stimfit_cursor1.png){width=100%}  
 <br>
-**Figure 15** *Loading the cursor settings window*
+**Figure 14** *Loading the cursor settings window*
 </center>
 <br>
 The cursor settings window will then load. Under the `Peak` tab and `Peak direction` section, click the `Down` radio button.  
@@ -454,9 +487,19 @@ The cursor settings window will then load. Under the `Peak` tab and `Peak direct
 <center>
 ![](images/Stimfit_cursor2.png){width=50%}  
 <br>
-**Figure 16** *Set the direction of mEPSC peak measurements*
+**Figure 15** *Set the direction of mEPSC peak measurements*
 </center>
 <br>
+
+<font size="4">  
+
+| <font size="7"> `r emo::ji("angel")` </font> TIP |
+|:---------------------------|
+| *You can reduce the influence of noise on your peak measurements by asking Stimfit to measure an average of a user-defined number of points centered around the peak. To do this, under the `Peak` tab of the `Cursor settings` window, enter an number (e.g. 25) in the `User-defined` text entry box just below where it says `Number of points for peak`, followed by `Apply`, then `Close`. N.B.: If you change tabs, make sure you press `Apply` first otherwise recent changes will be lost.* |  
+| |  
+
+
+</font>
 
 ### Calculate ensemble mean mEPSC
 
@@ -465,7 +508,7 @@ Lets now calculate an ensemble mean mEPSC to help us decide on where to position
 <center>
 ![](images/Stimfit_average.png){width=100%}  
 <br>
-**Figure 17** *Calculating the ensemble mean mEPSC*
+**Figure 16** *Calculating the ensemble mean mEPSC*
 </center>
 
 
@@ -476,7 +519,7 @@ The mEPSCs are downward deflections of the current, so before we ask Stimfit to 
 <center>
 ![](images/Stimfit_peak.png){width=100%}  
 <br>
-**Figure 18** *Set the <font color="red">red</font> peak cursors*
+**Figure 17** *Set the <font color="red">red</font> peak cursors*
 </center>
 <br>
 
@@ -487,7 +530,7 @@ The holding current is seldom exactly zero so we need to subtract the constant o
 <center>
 ![](images/Stimfit_baseline.png){width=100%}  
 <br>
-**Figure 19** *Set the <font color="green">green</font> baseline cursors*
+**Figure 18** *Set the <font color="green">green</font> baseline cursors*
 </center>
 <br>
 
@@ -498,7 +541,7 @@ If you now scroll through the mEPSCs using your `left` and `right` cursor keys, 
 <center>
 ![](images/Stimfit_measure.png){width=50%}  
 <br>
-**Figure 20** *Measurement annotations*
+**Figure 19** *Measurement annotations*
 </center>
 <br>
 Do the annotations make sense? If not, consider going back and resetting your peak and baseline cursors.
@@ -510,7 +553,7 @@ Now click on `Batch analysis...` under the `Analysis` menu to load a pop-up with
 <center>
 ![](images/Stimfit_batch1.png){width=100%}  
 <br>
-**Figure 21** *Loading the batch analysis options*
+**Figure 20** *Loading the batch analysis options*
 </center>
 <br>
 
@@ -519,38 +562,68 @@ Check the boxes only for `Peak (from base)`, `Lo-Hi% risetime` and `Half amplitu
 <center>
 ![](images/Stimfit_batch2.png){width=50%}  
 <br>
-**Figure 22** *Selecting batch analysis options*
+**Figure 21** *Selecting batch analysis options*
 </center>
 <br>
 
 
 A table of results will appear on the left hand side listing the amplitude, 20-80% rise time and full-width half-maximum for each event. Copy and past this data into a spreadsheet and save it in a file named with your surname in the following location:
 `S:\ATiN\Tutorial\Eventer\student_mEPSCs\`
+The staff member running your workshop will post your data on Canvas for you to download.
 
 <center>
 ![](images/Stimfit_batch_results.png){width=50%}  
 <br>
-**Figure 23** *Table of results*
+**Figure 22** *Table of results*
 </center>
 <br>
 
 ## Report
 
-As part of your assessment you may choose to write a lab report based on this workshop. The report should be no longer than 3000 words. If you write a report for this workshop, I suggest the following structure:  
+As part of your assessment you may choose to write a lab report based on this workshop. The report should be no longer than 3000 words. If you write a report for this workshop, I suggest the following structure.   
 
 * Title
-
 * Abstract
-
-* Introduction: Introduce patch clamp in brain slices and methods for detecting and analysing spontaneous synaptic currents.
-
-* Methods: Choose to describe the methods for preparing and recording from either acute **OR** organotypic hypocampal slices. Summarise the approach used to detect mEPSCs from recordings and analyse mEPSC properties.
-
-* Results: Using the data collected from your efforts in the class and provided to you by your tutor, present and interpret mEPSC detection results obtained by: 1) manual event screening (different users), and 2) by to using a single, trained machine learning model. 
-
-* Discussion: Critically discuss your results and the application of the various techniques.
-
+* Introduction
+* Methods
+* Results
+* Discussion
 * References
+
+Introduce the methods used to making patch clamp recordings in brain slices and briefly describe their impact on neuroscience research, particularly in the field of synaptic physiology. Describe the quantal nature of synaptic transmission, briefly including historical aspects of its discovery. Introduce how researchers isolate miniature synaptic currents and the difficulties in detecting/identifying them in neurons, especially miniature excitatory post synaptic currents (mEPSCs). Finish the introduction by telling the reader about the aim of the practical and very briefly what you found.
+
+Choose to describe the methods for preparing, and recording from, either acute **OR** organotypic hypocampal slices. Summarise the approach used to record, detect and analyse mEPSCs. Be clear about the conditions under which mEPSC recordings are made to ensure that they are 'excitatory' and 'miniature' and be specific about what exactly you are measuring (e.g. 20-80% rise time? 10-90% rise time? If applicable, how many points are you averaging around the peak?). What software did you use to make the recordings.
+ 
+In your software of choice (e.g. Excel, R/RStudio, SPSS) and outside the class you will be expected to analse the data. Calculate and tabulate and/or graph descriptive statistics for the three mEPSC properties (peak, rise time and full-width half maximum). Examine the distributions of each of the three mEPSC properties using histograms and/or kernel density estimates. Describe what they look like... is it what you expected? Would it make more sense to create histograms (or kernel density estimates) from the log-transformed data? Analyse the relationship of the mEPSC properties with one another...are they correlated?
+
+Critically discuss your results and the application of the various techniques. Possible areas of discussion of your results and your reading on the subject could include:  
+
+* Your recordings represent mEPSCs recorded from one hippocampal pyramidal neuron. What could be the sources of variability underlying the various mEPSC properties you measured?
+* Compare your results with what is observed in the literature. Do you think you see the same thing? What factors may affect the relationship between mEPSC shape and size?
+* Discuss alternative ways of triggering and measuring mEPSCs.
+* Discuss alternative approaches/algorithms that can be used to detect spontaneous synaptic transmission.
+
+## Suggested reading
+
+PATCH CLAMP IN SLICES
+
+[Chapter 6: "Patch-clamp techniques applied to brain slices" in Walz et al. (2002) Patch-Clamp Analysis Advanced Techniques. (Humana Press) (preview-only)](https://canvas.sussex.ac.uk/courses/11965/pages/patch-clamp-in-slices)
+
+[Segev et al. (2016) Whole-cell Patch-clamp Recordings in Brain Slices. J Vis Exp. (112): 54024. (Links to an external site.)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4927800/)
+
+
+DETECTING SPONTANEOUS SYNAPTIC CURRENTS
+
+[Pernía-Andrade et al. (2012) A Deconvolution-Based Method with High Sensitivity and Temporal Resolution for Detection of Spontaneous Synaptic Currents In Vitro and In Vivo. Biophys J. 103(7): 1429–1439. (Links to an external site.)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3471482/)
+
+
+SYNAPTIC PHYSIOLOGY
+
+[Section "Quantal analysis: Probing synaptic physiology" in Squire et al. (2008) Fundamental Neuroscience (3rd Edition) p173-176Preview the document (preview only)](https://canvas.sussex.ac.uk/courses/11965/pages/synaptic-physiology)
+
+[Bekkers and Stevens (1996) Cable properties of cultured hippocampal neurons determined from sucrose-evoked miniature EPSCs. J Neurophysiol. 75(3):1250-5](https://pubmed.ncbi.nlm.nih.gov/8867133/)
+
+N.B. If a link takes you to Canvas, after you enter your login details it will ask if you want to 'Stay signed in?', to which you should reply 'No', because you are currently on a shared profile.
 
 ## Acknowledgements
 

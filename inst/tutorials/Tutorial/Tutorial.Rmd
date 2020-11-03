@@ -77,7 +77,7 @@ Currents elicited by unitary synaptic connections at CNS synapses are typically 
 ```{r background_questions}
 # Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("Which of the following are advantages of recording from brain slices over recording in vivo? (multiple answers)",
+  question("Which of the following are advantages of recording from brain slices over recording *in vivo*? (multiple answers)",
     answer("They are more amenable to controlled pharmacological intervention",correct = TRUE),
     answer("They don't involve the use of animals for experiments"),
     answer("Whole-cell voltage-clamp experiments are more feasible",correct = TRUE),
@@ -155,7 +155,7 @@ This video was in the pre-lab handout. If you already watched it you may wish to
 ![](https://youtu.be/GvUg0wiu_p8)
 https://youtu.be/GvUg0wiu_p8
 
-| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT ORGANOTYPIC SLICES |
+| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT ORGANOTYPIC SLICE CULTURE |
 |:---------------------------|
 
 ```{r organotypic_slice_questions}
@@ -197,7 +197,7 @@ This video was in the pre-lab handout. If you already watched it you may wish to
 ![](https://youtu.be/jETRgJp7DZY)
 https://youtu.be/jETRgJp7DZY
 
-| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT PATCH CLAMP |
+| <font size="7">  `r emo::ji("thinking")` </font> QUESTIONS ABOUT PATCH CLAMP AND mEPSC RECORDING |
 |:---------------------------|
 
 ```{r patchclamp_questions}
@@ -228,8 +228,8 @@ quiz(
     answer("Tetanus toxin"),
     answer("Tetradotoxin", correct = TRUE),
     answer("Picrotoxin"),
-    correct = "That's correct! Tetradotoxin blocks voltage-dependent sodium channels thereby preventing action potential-evoked, and potentially multivesicular, neurotransmitter release. This just leaves the stochastic release of neurotransmitter vesicles",
-    try_again = "Nope, try again. Try looking up these toxins to find out what they do.",
+    correct = "That's correct! Tetradotoxin blocks voltage-dependent sodium channels thereby preventing action potential-evoked, and potentially multivesicular, neurotransmitter release. This just leaves the stochastic release of neurotransmitter vesicles. It is typically used at a concentration of about 1 microM.",
+    try_again = "Nope, try again. Try looking up these toxins with google or wikipedia to find out what they do.",
     try_again_button = "Try again",
     allow_retry = TRUE
   ),
@@ -238,8 +238,8 @@ quiz(
     answer("CNQX"),
     answer("Tetradotoxin"),
     answer("Picrotoxin", correct = TRUE),
-    correct = "That's correct! Picrotoxin blocks GABA<sub>A</sub> receptors that mediate inhibitory postsynaptic currents",
-    try_again = "Nope, try again. Try looking up these drugs/toxins to find out what they do.",
+    correct = "That's correct! Picrotoxin blocks GABA<sub>A</sub> receptors that mediate inhibitory postsynaptic currents. It is typically used at a concentration of about 50 microM.",
+    try_again = "Nope, try again. Try looking up these drugs/toxins with google or wikipedia to find out what they do.",
     try_again_button = "Try again",
     allow_retry = TRUE
   )

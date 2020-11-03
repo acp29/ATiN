@@ -1,2 +1,0 @@
-/Users/ogsteele/Library/Mobile Documents/com~apple~CloudDocs/DPhil/Analysis/Analysis_Scripts/mEPSC/
-./F2.phy

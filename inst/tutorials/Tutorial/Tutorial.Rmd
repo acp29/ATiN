@@ -77,7 +77,7 @@ Currents elicited by unitary synaptic connections at CNS synapses are typically 
 ```{r background_questions}
 # Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("Which of the following are advantages of recording from brain slices over recording in vivo?",
+  question("Which of the following are advantages of recording from brain slices over recording in vivo? (multiple answers)",
     answer("They are more amenable to controlled pharmacological intervention",correct = TRUE),
     answer("They don't involve the use of animals for experiments"),
     answer("Whole-cell voltage-clamp experiments are more feasible",correct = TRUE),
@@ -87,7 +87,7 @@ quiz(
     try_again_button = "Try again",
     allow_retry = TRUE
   ),
-  question("Which of the following would be good situations to use patch clamp recordings in brain slices?",
+  question("Which of the following would be good situations to use patch clamp recordings in brain slices? (multiple answers)",
     answer("To characterize conductances underlying neuronal signalling using voltage-clamp and pharmacological tools",correct = TRUE),
     answer("To map out functional connectivity in local circuits",correct = TRUE),
     answer("To characterize microscopic currents from single channels, which contribute to membrane conductances",correct = TRUE),
@@ -110,6 +110,8 @@ We can either record from freshly cut brain slices (called acute slices) or we c
 | <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Preparing acute hippocampal slices (16 mins) |
 |:---------------------------|
 
+This video was in the pre-lab handout. If you already watched it you may wish to skip straight to the questions below. If you do watch the video, please mute your microphone on zoom (unless you are using earphones).
+
 ![](https://youtu.be/EPYVjMOPcTE)
 https://youtu.be/EPYVjMOPcTE
 
@@ -119,10 +121,10 @@ https://youtu.be/EPYVjMOPcTE
 ```{r acute_slice_questions}
 # Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("Which of the following represent benefits of the cutting solution being ice-cold?",
+  question("Which of the following represent benefits of the cutting solution being ice-cold? (multiple answers)",
     answer("It increases oxygen solubility in the solution", correct = TRUE),
     answer("It stops the brain overheating"),
-    answer("It slow the activity of enzymes acting to damage the slice", correct = TRUE),
+    answer("It slows the activity of enzymes acting to damage the slice", correct = TRUE),
     answer("It reduces the metabolism of the tissue and lowers the risk of hypoxia.", correct = TRUE),
     answer("It reduces the metabolism of the tissue and lowers the risk of acidosis.", correct = TRUE),
     correct = "That's correct!",
@@ -130,12 +132,12 @@ quiz(
     try_again_button = "Try again",
     allow_retry = TRUE
   ),
-  question("What is the ideal mix of Na and Mg in the sucrose-based cutting solution?",
-    answer("High Mg^2+^, High Ca^2+^, High NaCl"),
-    answer("Low Mg^2+^, Low Ca^2+^, Low NaCl"),
-    answer("High Mg^2+^, High Ca^2+^, Low NaCl", correct = TRUE),
-    answer("Low Mg^2+^, Low Ca^2+^, High NaCl"),
-    correct = "That's correct!",
+  question("Which ONE of the following is the ideal mix of Mg^2+^, Ca^2+^ and NaCl in the sucrose-based cutting solution?",
+    answer("High Mg^2+^ High Ca^2+^ High NaCl"),
+    answer("Low Mg^2+^ Low Ca^2+^ Low NaCl"),
+    answer("High Mg^2+^ High Ca^2+^ Low NaCl", correct = TRUE),
+    answer("Low Mg^2+^ Low Ca^2+^ High NaCl"),
+    correct = "That's correct! Elevated Mg^2+^ (e.g. 7 mM) helps block NMDA receptors to reduce excitotoxicity and the high concentration of divalent cations is thought to result in screening membrane charges thereby raising the threshold of activation of voltage-gated ion channels. The higher Mg^2+^ also helps to antagonise the binding of Ca^2+^ to the putative Ca^2+^ sensor. Together with the lower Ca^2+^ (e.g. 0.5 mM), this helps to suppress seizure activity by reducing synaptic transmission thereby lowering the metabolic demands of the tissue. The low NaCl concentration (with osmolarity corrected with sucrose) helps to prevent cells from swelling by osmosis during the slicing procedure.",
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
     allow_retry = TRUE
@@ -148,6 +150,8 @@ quiz(
 | <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Preparing organotypic hippocampal slices (27 mins) |
 |:---------------------------|
 
+This video was in the pre-lab handout. If you already watched it you may wish to skip straight to the questions below. If you do watch the video, please mute your microphone on zoom (unless you are using earphones).
+
 ![](https://youtu.be/GvUg0wiu_p8)
 https://youtu.be/GvUg0wiu_p8
 
@@ -157,22 +161,22 @@ https://youtu.be/GvUg0wiu_p8
 ```{r organotypic_slice_questions}
 # Include correct and incorrect statements to aid students understanding as necessary. 
 quiz(
-  question("What is the pH buffering system most often used in cell culture?",
+  question("Which ONE of the following is the pH buffering system most often used in cell culture?",
     answer("10 mM HEPES"),
     answer("10 mM Tris-Cl"),
     answer("25 mM Na-HCO<sub>3</sub>"),
     answer("25 mM Na-HCO<sub>3</sub> + 5% CO<sub>2</sub>", correct = TRUE),
-    correct = "That's correct!",
+    correct = "That's correct! Cell culture often uses the same buffering system used in the blood and CSF, which is a balanced combination of Na-HCO<sub>3</sub> and 5% CO<sub>2</sub>",
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
     allow_retry = TRUE
   ),
-  question("What age rodents are slices typically prepared from?",
+  question("Which ONE of the following is the age of rodents typically used to prepare organotypic hippocampal slices?",
     answer("P0"),
     answer("P5-7", correct = TRUE),
     answer("P21"),
     answer("P40 or older"),
-    correct = "That's correct! The success rate for culturing slices from rodents older than about P10 tends to drop.",
+    correct = "That's correct! The success rate for culturing slices from rodents older than about P10 tends to drop and hippocampal slices cultured from younger animals (P0) do not maintain well the defined organisation and structure of the hippocampus",
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
     allow_retry = TRUE
@@ -188,6 +192,8 @@ Now we have prepared our slices it's time to actually record from them!
 | <font size="7">  `r emo::ji("clapper")` </font> Virtual lab demo: Patch clamp in brain slices (37 mins) |
 |:---------------------------|
 
+This video was in the pre-lab handout. If you already watched it you may wish to skip straight to the questions below. If you do watch the video, please mute your microphone on zoom (unless you are using earphones).
+
 ![](https://youtu.be/jETRgJp7DZY)
 https://youtu.be/jETRgJp7DZY
 
@@ -202,7 +208,7 @@ quiz(
     answer("Tungsten"),
     answer("Platinum"),
     answer("Silver chloride", correct = TRUE),
-    correct = "That's correct!",
+    correct = "That's correct! A silver chloride electrode helps to reduce the junction potential at the liquid-metal interface.",
     try_again = "Not quite, try again.",
     try_again_button = "Try again",
     allow_retry = TRUE
@@ -222,8 +228,8 @@ quiz(
     answer("Tetanus toxin"),
     answer("Tetradotoxin", correct = TRUE),
     answer("Picrotoxin"),
-    correct = "That's correct!",
-    try_again = "Not quite, try again.",
+    correct = "That's correct! Tetradotoxin blocks voltage-dependent sodium channels thereby preventing action potential-evoked, and potentially multivesicular, neurotransmitter release. This just leaves the stochastic release of neurotransmitter vesicles",
+    try_again = "Nope, try again. Try looking up these toxins to find out what they do.",
     try_again_button = "Try again",
     allow_retry = TRUE
   ),
@@ -232,8 +238,8 @@ quiz(
     answer("CNQX"),
     answer("Tetradotoxin"),
     answer("Picrotoxin", correct = TRUE),
-    correct = "That's correct!",
-    try_again = "Not quite, try again.",
+    correct = "That's correct! Picrotoxin blocks GABA<sub>A</sub> receptors that mediate inhibitory postsynaptic currents",
+    try_again = "Nope, try again. Try looking up these drugs/toxins to find out what they do.",
     try_again_button = "Try again",
     allow_retry = TRUE
   )
@@ -248,6 +254,7 @@ In the section we will be analysing some of the data like the ones we generated 
 | <font size="7">  `r emo::ji("clapper")` </font> Virtual lab training: Learning how to use Eventer (20 min)|
 |:---------------------------|
 
+When you watch the video, please mute your microphone on zoom (unless you are using earphones).
 ![](https://www.youtube.com/watch?v=gaRo8SijUtg&t=34s)
 
 https://www.youtube.com/watch?v=gaRo8SijUtg&t=34s
@@ -274,8 +281,6 @@ Before selecting the data file we want to load, we need to set:
 
 Only some data formats allow for multiple recording channels; the recordings you will analyse only have 1 channel so the `Channel` setting can be left at the default value of 1. Split can be used if you want to split a continuous recording wave into smaller waves for parallel processing or to synchronous artifacts (e.g. current transients resulting from test pulses). The recording you will analyse is 1.5 minutes long with test pulses delivered every 30 seconds. Therefore, the first thing to do is set the `Split` value to 10 seconds. This will separate the 1.5 minute recording into 3 waves that are 10 seconds long each.
 
-Eventer has a lot of settings built in to help improve consistency between analysis of different datasets. One such feature is the `Presets` feature that enables users to load all the settings used in another analysis. To help in your analysis today, and make it easier to compare between each of your datasets that you will generate, please now click the `Presets` button and navigate to, and load, the `presets.m` file in `S:\ATiN\Tutorial\Eventer\` and then click `Apply Presets`. It is important to still follow the below instructions to make sure your time constants and exclusion zones are appropriate for the recordings you are analysing.
-
 
 <center>
 ![](images/Screenshot 2020-08-18 at 16.09.13.png){width=100%}  
@@ -286,7 +291,7 @@ Eventer has a lot of settings built in to help improve consistency between analy
 
 ### Loading your data  
 
-Click the `Load` button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: `S:\ATiN\Tutorial\Eventer\[Room Number]`  
+Click the `Load` button and locate the data file you have been allocated to analyse in the file dialog. The file will be located in the following directory: `S:\ATiN\Tutorial\Eventer\Group [Room Number]`  
 Ask a tutor if you do not know which file to load.
 
 <center>
@@ -590,11 +595,11 @@ As part of your assessment you may choose to write a lab report based on this wo
 * Discussion
 * References
 
-Introduce the methods used to making patch clamp recordings in brain slices and briefly describe their impact on neuroscience research, particularly in the field of synaptic physiology. Describe the quantal nature of synaptic transmission, briefly including historical aspects of its discovery. Introduce how researchers isolate miniature synaptic currents and the difficulties in detecting/identifying them in neurons, especially miniature excitatory post synaptic currents (mEPSCs). Finish the introduction by telling the reader about the aim of the practical and very briefly what you found.
+Introduce the methods used to making patch clamp recordings in brain slices and briefly describe their impact on neuroscience research, particularly in the field of synaptic physiology. Describe the quantal nature of synaptic transmission, briefly including historical aspects of its discovery. Introduce how researchers isolate miniature synaptic currents and the difficulties in detecting/identifying them in neurons, especially miniature excitatory postsynaptic currents (mEPSCs). Finish the introduction by telling the reader about the aim of the practical and very briefly what you found.
 
-Choose to describe the methods for preparing, and recording from, either acute **OR** organotypic hypocampal slices. Summarise the approach used to record, detect and analyse mEPSCs. Be clear about the conditions under which mEPSC recordings are made to ensure that they are 'excitatory' and 'miniature' and be specific about what exactly you are measuring (e.g. 20-80% rise time? 10-90% rise time? If applicable, how many points are you averaging around the peak?). What software did you use to make the recordings.
+Choose to describe the methods for preparing, and recording from, either acute **OR** organotypic hippocampal slices. Summarise the approach used to record, detect and analyse mEPSCs. Be clear about the conditions under which mEPSC recordings are made to ensure that they are 'excitatory' and 'miniature' and be specific about what exactly you are measuring (e.g. 20-80% rise time? 10-90% rise time? If applicable, how many points are you averaging around the peak?). What software did you use to make the recordings.
  
-In your software of choice (e.g. Excel, R/RStudio, SPSS) and outside the class you will be expected to analse the data. Calculate and tabulate and/or graph descriptive statistics for the three mEPSC properties (peak, rise time and full-width half maximum). Examine the distributions of each of the three mEPSC properties using histograms and/or kernel density estimates. Describe what they look like... is it what you expected? Would it make more sense to create histograms (or kernel density estimates) from the log-transformed data? Analyse the relationship of the mEPSC properties with one another...are they correlated?
+In your software of choice (e.g. Excel, R/RStudio, SPSS) and outside the class you will be expected to analyse the data. Calculate and tabulate and/or graph descriptive statistics for the three mEPSC properties (peak, rise time and full-width half-maximum). Examine the distributions of each of the three mEPSC properties using histograms and/or kernel density estimates. Describe what they look like... is it what you expected? Would it make more sense to create histograms (or kernel density estimates) from the log-transformed data? Analyse the relationship of the mEPSC properties with one another...are they correlated?
 
 Critically discuss your results and the application of the various techniques. Possible areas of discussion of your results and your reading on the subject could include:  
 
@@ -602,6 +607,8 @@ Critically discuss your results and the application of the various techniques. P
 * Compare your results with what is observed in the literature. Do you think you see the same thing? What factors may affect the relationship between mEPSC shape and size?
 * Discuss alternative ways of triggering and measuring mEPSCs.
 * Discuss alternative approaches/algorithms that can be used to detect spontaneous synaptic transmission.
+
+If you finish early, you may wish to get started on analysing the data during the lab.
 
 ## Suggested reading
 

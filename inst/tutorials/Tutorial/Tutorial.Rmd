@@ -22,6 +22,14 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
+## Important notice
+| <font size="7">  `r emo::ji("exclamation")` REQUEST FOR CONSENT `r emo::ji("exclamation")` </font> |
+|:---------------------------|
+
+In part of this workshop we will ask you to classify what you think is, or is not, a 'real' synaptic current. This is a common step in the analysis of spontaneous mESPCs using manual classification. By continuing with this workshop you are providing your consent that your mEPSC classification can be used in a data set, which may be used for publication. **This does not require you to provide or share any personal data.** 
+
+If you do not wish to provide consent, please contact a tutor or the the staff member organising the workshop.
+
 ## Learning outcomes
 
 By the end of this workshop a successful student should be able to:
